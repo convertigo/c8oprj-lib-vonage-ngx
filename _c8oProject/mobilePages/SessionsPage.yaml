@@ -1,0 +1,213 @@
+↑isRoot: true
+icon: aperture
+iconPosition: start
+segment: path-to-sessionspage
+title: Session manager
+↓FabContainer [ngx.components.UIDynamicElement-1604829267331]: 
+  beanData: |
+    '{
+     "ionBean": "FabContainer",
+     "Horizontal": "plain:end",
+     "Vertical": "plain:bottom"
+    }'
+  tagName: ion-fab
+  ↓FabButton [ngx.components.UIDynamicElement-1604829228763]: 
+    beanData: '{"ionBean":"FabButton"}'
+    tagName: ion-fab-button
+    ↓Icon [ngx.components.UIDynamicElement-1604829250212]: 
+      beanData: '{"ionBean":"Icon"}'
+      tagName: ion-icon
+    ↓Event [ngx.components.UIControlEvent-1604829371516]: 
+      ↓ModalPage [ngx.components.UIDynamicAction-1604829506709]: 
+        beanData: |
+          '{
+           "ionBean": "ModalAction",
+           "page": "plain:lib_Vonage_Ngx.Mobile_application.Application.AskSessionPage",
+           "blockWhileDisplayed": "plain:true"
+          }'
+        ↓IfElse [ngx.components.UIDynamicIf-1604830001070]: 
+          beanData: '{"ionBean":"IfElseAction","condition":"script:out != undefined"}'
+          ↓CallSequenceAppCreateVideoSession [ngx.components.UIDynamicAction-1604830037541]: 
+            beanData: '{"ionBean":"CallSequenceAction","requestable":"plain:lib_Vonage_Ngx.AppCreateVideoSession"}'
+            ↓name [ngx.components.UIControlVariable-1604830062088]: 
+              comment: new variable
+              varValue: 
+                - xmlizable: 
+                  - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                  - MobileSmartSourceType: script:stack['ModalPage'].out.data.sessionName
+            ↓CallSequenceListVideoSessions [ngx.components.UIDynamicAction-1604842529193]: 
+              beanData: '{"ionBean":"CallSequenceAction","requestable":"plain:lib_Vonage_Ngx.ApplistAvailableVideoSessions"}'
+          ↓Log [ngx.components.UIDynamicAction-1615223479077]: 
+            beanData: '{"ionBean":"LogAction","message":"script:''session name:''+stack[''ModalPage''].out.data.sessionName"}'
+            isEnabled: false
+↓Header [ngx.components.UIDynamicElement-1604129273982]: 
+  beanData: '{"ionBean":"Header"}'
+  comment: Page header
+  tagName: ion-header
+  ↓ToolBar [ngx.components.UIDynamicElement-1604129273985]: 
+    beanData: '{"ionBean":"ToolBar","IonColor":"plain:primary"}'
+    tagName: ion-toolbar
+    ↓ButtonSet1 [ngx.components.UIDynamicElement-1615221153193]: 
+      beanData: '{"ionBean":"ButtonSet","SetPosition":"plain:start"}'
+      tagName: ion-buttons
+      ↓Button [ngx.components.UIDynamicElement-1604129273994]: 
+        beanData: '{"ionBean":"MenuButton"}'
+        comment: A button to toggle the menu
+        tagName: ion-menu-button
+    ↓BarTitle [ngx.components.UIDynamicElement-1604129273988]: 
+      beanData: '{"ionBean":"BarTitle"}'
+      tagName: ion-title
+      ↓Text [ngx.components.UIText-1604129273991]: 
+        i18n: false
+        textValue: 
+          - xmlizable: 
+            - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+            - MobileSmartSourceType: plain:Available Sessions
+    ↓ButtonSet2 [ngx.components.UIDynamicElement-1604129274000]: 
+      beanData: '{"ionBean":"ButtonSet","SetPosition":"plain:end"}'
+      tagName: ion-buttons
+      ↓Button [ngx.components.UIDynamicElement-1604129274003]: 
+        beanData: '{"ionBean":"Button"}'
+        tagName: ion-button
+        ↓Icon [ngx.components.UIDynamicElement-1604129274006]: 
+          beanData: '{"ionBean":"Icon","IconName":"plain:ellipsis-vertical-outline"}'
+          tagName: ion-icon
+↓Content [ngx.components.UIDynamicElement-1604075160451]: 
+  beanData: '{"ionBean":"Content"}'
+  tagName: ion-content
+  ↓CardContainer [ngx.components.UIDynamicElement-1605105408256]: 
+    beanData: '{"ionBean":"Card"}'
+    tagName: ion-card
+    ↓CardTitle [ngx.components.UIDynamicElement-1605105439856]: 
+      beanData: '{"ionBean":"CardTitle"}'
+      tagName: ion-card-title
+      ↓Text [ngx.components.UIText-1605105452719]: 
+        textValue: 
+          - xmlizable: 
+            - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+            - MobileSmartSourceType: plain:Instructions
+      ↓FormatLayout [ngx.components.UIDynamicAttr-1615224177628]: 
+        beanData: '{"ionBean":"FormatLayout","TextAlignment":"plain:ion-text-center"}'
+        selfClose: false
+    ↓CardContent [ngx.components.UIDynamicElement-1605105444128]: 
+      beanData: '{"ionBean":"CardContent"}'
+      tagName: ion-card-content
+      ↓Text [ngx.components.UIText-1605105478015]: 
+        textValue: 
+          - xmlizable: 
+            - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+            - MobileSmartSourceType: plain:You can add sessions by tapping on the '+' icon. The session will displayed in the list. 
+      ↓Break [ngx.components.UIDynamicElement-1605105664776]: 
+        beanData: '{"ionBean":"Break"}'
+        selfClose: true
+        tagName: br
+      ↓Text2 [ngx.components.UIText-1615281852252]: 
+        textValue: 
+          - xmlizable: 
+            - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+            - MobileSmartSourceType: plain:Once the session created, you can slide it right to reveal the 'delete' button to remove it, or slide it left to reveal the 'publish' or 'subscribe' buttons. 
+      ↓Break1 [ngx.components.UIDynamicElement-1605105682862]: 
+        beanData: '{"ionBean":"Break"}'
+        selfClose: true
+        tagName: br
+      ↓Text1 [ngx.components.UIText-1605105671160]: 
+        textValue: 
+          - xmlizable: 
+            - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+            - MobileSmartSourceType: plain:'publish' will publish you camera on this session, while 'subscribe' will receive the session video stream and display it
+  ↓ListContainer [ngx.components.UIDynamicElement-1604828742553]: 
+    beanData: '{"ionBean":"List"}'
+    tagName: ion-list
+    ↓Directive [ngx.components.UIControlDirective-1604828803946]: 
+      directiveSource: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+          - MobileSmartSourceType: source:{"filter":"Sequence","project":"lib_Vonage_Ngx","input":"listen(['lib_Vonage_Ngx.ApplistAvailableVideoSessions'])?.rows"}
+      ↓SlidingContainer [ngx.components.UIDynamicElement-1615224878715]: 
+        beanData: '{"ionBean":"SlidingContainer"}'
+        tagName: ion-item-sliding
+        ↓SlidingButtonSet [ngx.components.UIDynamicElement-1615224896956]: 
+          beanData: '{"ionBean":"SlidingButtonSet","Side":"plain:start"}'
+          tagName: ion-item-options
+          ↓SlidingButton [ngx.components.UIDynamicElement-1615224928947]: 
+            beanData: '{"ionBean":"SlidingButton","IonColor":"plain:danger"}'
+            tagName: ion-item-option
+            ↓Text [ngx.components.UIText-1615224978307]: 
+              textValue: 
+                - xmlizable: 
+                  - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                  - MobileSmartSourceType: plain:delete
+            ↓Event [ngx.components.UIControlEvent-1615225663802]: 
+              ↓CallSequenceAppRemoveVideoSession [ngx.components.UIDynamicAction-1615225810201]: 
+                beanData: '{"ionBean":"CallSequenceAction","requestable":"plain:lib_Vonage_Ngx.AppRemoveVideoSession"}'
+                ↓CallSequenceListVideoSessions [ngx.components.UIDynamicAction-1615225810204]: 
+                  beanData: '{"ionBean":"CallSequenceAction","requestable":"plain:lib_Vonage_Ngx.ApplistAvailableVideoSessions"}'
+                ↓sessionName [ngx.components.UIControlVariable-1615225810207]: 
+                  comment: new variable
+                  varValue: 
+                    - xmlizable: 
+                      - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                      - MobileSmartSourceType: source:{"filter":"Iteration","project":"lib_Vonage_Ngx","input":"item1604828803946?.id"}
+        ↓GenericItem [ngx.components.UIDynamicElement-1615225467595]: 
+          beanData: '{"ionBean":"GenericItem","Button":"plain:true"}'
+          tagName: ion-item
+          ↓Event [ngx.components.UIControlEvent-1615225153284]: 
+            ↓PushPage [ngx.components.UIDynamicAction-1615225153287]: 
+              beanData: |
+                '{
+                 "ionBean": "PushPageAction",
+                 "page": "plain:lib_Vonage_Ngx.Mobile_application.Application.VideoPagePublish",
+                 "data": "source:{\"filter\":\"Iteration\",\"project\":\"lib_Vonage_Ngx\",\"input\":\"item1604828803946?.value\"}"
+                }'
+          ↓Text [ngx.components.UIText-1615226329893]: 
+            textValue: 
+              - xmlizable: 
+                - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                - MobileSmartSourceType: source:{"filter":"Iteration","project":"lib_Vonage_Ngx","input":"item1604828803946?.id"}
+        ↓SlidingButtonSet1 [ngx.components.UIDynamicElement-1615225484052]: 
+          beanData: '{"ionBean":"SlidingButtonSet"}'
+          tagName: ion-item-options
+          ↓SlidingButton [ngx.components.UIDynamicElement-1615225484055]: 
+            beanData: '{"ionBean":"SlidingButton","IonColor":"plain:primary"}'
+            tagName: ion-item-option
+            ↓Text [ngx.components.UIText-1615225484058]: 
+              textValue: 
+                - xmlizable: 
+                  - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                  - MobileSmartSourceType: plain:Publish
+            ↓Event [ngx.components.UIControlEvent-1615225795211]: 
+              ↓PushPagePublishVideo [ngx.components.UIDynamicAction-1615225819601]: 
+                beanData: |
+                  '{
+                   "ionBean": "PushPageAction",
+                   "page": "plain:lib_Vonage_Ngx.Mobile_application.Application.VideoPagePublish",
+                   "data": "source:{\"filter\":\"Iteration\",\"project\":\"lib_Vonage_Ngx\",\"input\":\"item1604828803946?.value\"}"
+                  }'
+          ↓SlidingButton1 [ngx.components.UIDynamicElement-1615225484061]: 
+            beanData: '{"ionBean":"SlidingButton","IonColor":"plain:success"}'
+            tagName: ion-item-option
+            ↓Text [ngx.components.UIText-1615225484064]: 
+              textValue: 
+                - xmlizable: 
+                  - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                  - MobileSmartSourceType: plain:Subscribe
+            ↓Event [ngx.components.UIControlEvent-1615225798722]: 
+              ↓PushPageSubscribeVideo [ngx.components.UIDynamicAction-1615225831457]: 
+                beanData: |
+                  '{
+                   "ionBean": "PushPageAction",
+                   "page": "plain:lib_Vonage_Ngx.Mobile_application.Application.VideoPageSubscribe",
+                   "data": "source:{\"filter\":\"Iteration\",\"project\":\"lib_Vonage_Ngx\",\"input\":\"item1604828803946?.value\"}"
+                  }'
+↓PageEvent [ngx.components.UIPageEvent-1604750314474]: 
+  ↓CallSequenceListVideoSessions [ngx.components.UIDynamicAction-1604750320818]: 
+    beanData: '{"ionBean":"CallSequenceAction","requestable":"plain:lib_Vonage_Ngx.ApplistAvailableVideoSessions"}'
+  ↓CallSequenceGetVideoApiKey [ngx.components.UIDynamicAction-1604846039677]: 
+    beanData: '{"ionBean":"CallSequenceAction","requestable":"plain:lib_Vonage_Ngx.ApiGetVideoApiKey"}'
+    ↓SetGlobal [ngx.components.UIDynamicAction-1604846068573]: 
+      beanData: |
+        '{
+         "ionBean": "SetGlobalAction",
+         "Property": "plain:videoApiKey",
+         "Value": "script:out.apiKey"
+        }'

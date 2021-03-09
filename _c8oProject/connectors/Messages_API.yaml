@@ -1,0 +1,34 @@
+baseDir: /v0.1/messages
+comment: The Messaging API is a new API that consolidates all messaging channels. It encapsulates a user (developer) from having to use multiple APIs to interact with our various channels such as SMS, MMS, Viber, Facebook Messenger, etc. The API normalises information across all channels to abstracted to, from and content. This API is currently in Beta.
+https: true
+port: 443
+server: api.nexmo.com
+↓__POST [transactions.JsonHttpTransaction]: 
+  accessibility: Private
+  comment: Send a Message
+  httpInfo: true
+  httpParameters: 
+    - xmlizable: 
+      - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+      - com.twinsoft.convertigo.beans.common.XMLVector: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+          - com.twinsoft.convertigo.beans.common.XMLVector: 
+            - java.lang.String: 
+              - ↑value: Accept
+            - java.lang.String: 
+              - ↑value: application/json
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+          - com.twinsoft.convertigo.beans.common.XMLVector: 
+            - java.lang.String: 
+              - ↑value: Content-Type
+            - java.lang.String: 
+              - ↑value: application/json
+  httpPool: global
+  httpVerb: POST
+  includeDataType: false
+  subDir: /
+  ↓__body [variables.RequestableHttpVariable-1604057464972]: 
+    httpMethod: POST
+    required: true

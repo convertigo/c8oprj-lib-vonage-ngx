@@ -1,0 +1,122 @@
+icon: camera
+iconPosition: start
+scriptContent: 
+  - xmlizable: 
+    - ↑classname: com.twinsoft.convertigo.beans.common.FormatedContent
+    - com.twinsoft.convertigo.beans.common.FormatedContent: 
+      →: |
+        /*Begin_c8o_PageImport*/
+        /*End_c8o_PageImport*/
+        /*Begin_c8o_PageDeclaration*/
+        	/*End_c8o_PageDeclaration*/
+        /*Begin_c8o_PageConstructor*/
+        		/*End_c8o_PageConstructor*/
+        /*Begin_c8o_PageFunction*/
+        	/*End_c8o_PageFunction*/
+        
+segment: path-to-videopagesubscribe
+title: Video Subscriber
+↓Header [ngx.components.UIDynamicElement-1604935551086]: 
+  beanData: '{"ionBean":"Header"}'
+  comment: Page header
+  tagName: ion-header
+  ↓ToolBar [ngx.components.UIDynamicElement-1604935551089]: 
+    beanData: '{"ionBean":"ToolBar","IonColor":"plain:primary"}'
+    tagName: ion-toolbar
+    ↓ButtonSet1 [ngx.components.UIDynamicElement-1615221218113]: 
+      beanData: '{"ionBean":"ButtonSet","SetPosition":"plain:start"}'
+      tagName: ion-buttons
+      ↓Button [ngx.components.UIDynamicElement-1604935551098]: 
+        beanData: '{"ionBean":"MenuButton"}'
+        comment: A button to toggle the menu
+        tagName: ion-menu-button
+    ↓BarTitle [ngx.components.UIDynamicElement-1604935551092]: 
+      beanData: '{"ionBean":"BarTitle"}'
+      tagName: ion-title
+      ↓Text [ngx.components.UIText-1604935551095]: 
+        i18n: false
+        textValue: 
+          - xmlizable: 
+            - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+            - MobileSmartSourceType: plain:Subscribing to Video
+    ↓ButtonSet2 [ngx.components.UIDynamicElement-1604935551104]: 
+      beanData: '{"ionBean":"ButtonSet","SetPosition":"plain:end"}'
+      tagName: ion-buttons
+      ↓Button [ngx.components.UIDynamicElement-1604935551107]: 
+        beanData: '{"ionBean":"Button"}'
+        tagName: ion-button
+        ↓Icon [ngx.components.UIDynamicElement-1604935551110]: 
+          beanData: '{"ionBean":"Icon","IconName":"plain:ellipsis-vertical-outline"}'
+          tagName: ion-icon
+↓PageEvent [ngx.components.UIPageEvent-1604935551113]: 
+  viewEvent: onWillEnter
+  ↓CallSequenceGetVideoToken [ngx.components.UIDynamicAction-1604935551116]: 
+    beanData: '{"ionBean":"CallSequenceAction","requestable":"plain:lib_Vonage_Ngx.ApiGetVideoToken"}'
+    ↓role [ngx.components.UIControlVariable-1604935551119]: 
+      comment: new variable
+      varValue: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+          - MobileSmartSourceType: plain:SUBSCRIBER
+    ↓data [ngx.components.UIControlVariable-1604935551122]: 
+      comment: new variable
+      varValue: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+          - MobileSmartSourceType: plain:
+    ↓expire [ngx.components.UIControlVariable-1604935551125]: 
+      comment: new variable
+      varValue: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+          - MobileSmartSourceType: plain:36000
+    ↓sessionID [ngx.components.UIControlVariable-1604935551128]: 
+      comment: new variable
+      varValue: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+          - MobileSmartSourceType: script:this.navParams.data
+↓Content [ngx.components.UIDynamicElement-1604935551131]: 
+  beanData: '{"ionBean":"Content"}'
+  tagName: ion-content
+  ↓Grid [ngx.components.UIDynamicElement-1604935551134]: 
+    beanData: '{"ionBean":"Grid"}'
+    tagName: ion-grid
+    ↓GridRow [ngx.components.UIDynamicElement-1604935551137]: 
+      beanData: '{"ionBean":"GridRow"}'
+      tagName: ion-row
+      ↓GridCol1 [ngx.components.UIDynamicElement-1604935551140]: 
+        beanData: '{"ionBean":"GridCol"}'
+        tagName: ion-col
+      ↓GridCol [ngx.components.UIDynamicElement-1604935551143]: 
+        beanData: '{"ionBean":"GridCol","SizeXs":"plain:10"}'
+        tagName: ion-col
+        ↓UseSharedComponent [ngx.components.UIUseShared-1604935551146]: 
+          sharedcomponent: lib_Vonage_Ngx.Mobile_application.Application.VonageVideo
+          ↓sessionId [ngx.components.UIControlVariable-1604935551149]: 
+            comment: The sessionId
+            varValue: 
+              - xmlizable: 
+                - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                - MobileSmartSourceType: script:this.navParams.data
+          ↓token [ngx.components.UIControlVariable-1604935551152]: 
+            comment: The token for connection
+            varValue: 
+              - xmlizable: 
+                - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                - MobileSmartSourceType: source:{"filter":"Sequence","project":"lib_Vonage_Ngx","input":"listen(['lib_Vonage_Ngx.ApiGetVideoToken'])?.token"}
+          ↓apiKey [ngx.components.UIControlVariable-1604935551155]: 
+            comment: The apiKey as declared in the API portal
+            varValue: 
+              - xmlizable: 
+                - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                - MobileSmartSourceType: source:{"filter":"Global","project":"lib_Vonage_Ngx","input":"router.sharedObject?.videoApiKey"}
+          ↓mode [ngx.components.UIControlVariable-1604935551158]: 
+            comment: The mode, can be publisher, subscriber or moderator
+            varValue: 
+              - xmlizable: 
+                - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                - MobileSmartSourceType: script:'subscriber'
+      ↓GridCol2 [ngx.components.UIDynamicElement-1604935551161]: 
+        beanData: '{"ionBean":"GridCol"}'
+        tagName: ion-col

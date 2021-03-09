@@ -1,0 +1,29 @@
+// Use this gradle file to build the Vonage.jar FAT JAR ...
+// You must manually remove slf4j-api-1.7.30.jar from the fat JAT to avoid class conflict with Convertigo server
+ 
+apply plugin: 'java'
+
+sourceSets {
+	main {
+		java {
+			srcDir 'src'
+		}
+	}
+}
+
+repositories {
+    jcenter() 
+}
+
+dependencies {
+  compile group: 'com.tokbox', name: 'opentok-server-sdk', version: '4.4.0'
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'cova2.Main'
+    } 
+    doFirst {
+        from { configurations.runtime.collect { it.isDirectory() ? it : zipTree(it) } }
+    }
+}

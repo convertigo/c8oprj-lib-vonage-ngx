@@ -1,0 +1,37 @@
+↓Input_variables [steps.InputVariablesStep-1604828310281]: 
+↓Call_Sequence [steps.SequenceStep-1604842339633]: 
+  sourceSequence: lib_Vonage_Ngx.ApiCreateVideoSession
+  ↓apiKey [variables.StepVariable-1604842339635]: 
+    value: 46971114
+  ↓apiSecret [variables.StepVariable-1604842339637]: 
+    value: 
+      - ↑ciphered: true
+      - ↑traceable: false
+      - →→: x8724fabbfeff03b89183e245ffcf4a222025ed10d713c5219dd9d872ff8b1df2affbfeb63efcc2ea90ae22d533bf9c61
+    visibility: '-1'
+  ↓name [variables.StepVariable-1604842339639]: 
+    value: test
+↓Call_Transaction [steps.TransactionStep-1604828276876]: 
+  sourceTransaction: lib_Vonage_Ngx.lib_vonage_fullsync.PostDocument
+  ↓_id [variables.StepVariable-1604828276878]: 
+    description: Document id
+    sourceDefinition: 
+      - xmlizable: 
+        - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+        - com.twinsoft.convertigo.beans.common.XMLVector: 
+          - java.lang.String: 
+            - ↑value: 1604828310281
+          - java.lang.String: 
+            - ↑value: ./name/text()
+  ↓data [variables.StepVariable-1604828276880]: 
+    description: Document content
+    sourceDefinition: 
+      - xmlizable: 
+        - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+        - com.twinsoft.convertigo.beans.common.XMLVector: 
+          - java.lang.String: 
+            - ↑value: 1604842339633
+          - java.lang.String: 
+            - ↑value: ./document/sessionID/text()
+↓name [variables.RequestableVariable-1604828251742]: 
+  value: test

@@ -1,0 +1,85 @@
+inAutoMenu: false
+scriptContent: 
+  - xmlizable: 
+    - ↑classname: com.twinsoft.convertigo.beans.common.FormatedContent
+    - com.twinsoft.convertigo.beans.common.FormatedContent: 
+      →: |
+        '/*Begin_c8o_PageImport*/
+        /*End_c8o_PageImport*/
+        /*Begin_c8o_PageDeclaration*/
+        	public sessionName: string = "";
+        	/*End_c8o_PageDeclaration*/
+        /*Begin_c8o_PageConstructor*/
+        		/*End_c8o_PageConstructor*/
+        /*Begin_c8o_PageFunction*/
+        	/*End_c8o_PageFunction*/
+        '
+segment: path-to-asksessionpage
+title: Title for AskSessionPage
+↓Content [ngx.components.UIDynamicElement-1604829539453]: 
+  beanData: '{"ionBean":"Content"}'
+  tagName: ion-content
+  ↓Label [ngx.components.UIDynamicElement-1604829725277]: 
+    beanData: '{"ionBean":"Label"}'
+    tagName: ion-label
+    ↓Text [ngx.components.UIText-1604829734957]: 
+      i18n: false
+      textValue: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+          - MobileSmartSourceType: plain:Please input here a session name
+  ↓TextInput [ngx.components.UIDynamicElement-1604829685101]: 
+    beanData: |
+      '{
+       "ionBean": "Input",
+       "DoubleBinding": "script:sessionName",
+       "Debounce": "plain:0",
+       "Placeholder": "plain:Session name"
+      }'
+    comment: sessionName declared in page
+    tagName: ion-input
+  ↓Button [ngx.components.UIDynamicElement-1604829566620]: 
+    beanData: '{"ionBean":"Button"}'
+    tagName: ion-button
+    ↓Text [ngx.components.UIText-1604829587884]: 
+      i18n: false
+      textValue: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+          - MobileSmartSourceType: plain:Ok
+    ↓Event [ngx.components.UIControlEvent-1604829632669]: 
+      ↓Dismiss [ngx.components.UICustomAction-1604836338828]: 
+        actionValue: 
+          - xmlizable: 
+            - ↑classname: com.twinsoft.convertigo.beans.common.FormatedContent
+            - com.twinsoft.convertigo.beans.common.FormatedContent: 
+              →: |
+                '    		page.c8o.log.debug(''[MB] ''+ props.actionFunction +'': ''+ props.actionName);
+                    		var modals = page.router.sharedObject["ModalPages"];
+                            if (modals != undefined) {
+                                var view = page.router.sharedObject["ModalPages"].pop();
+                                if (view != undefined) {
+                                    view.dismiss(page["sessionName"]).then(function () {
+                                        page.c8o.log.debug("[MB] Modal Page closed");
+                                        resolve();
+                                    });
+                                }
+                            }
+                '
+        isEnabled: false
+      ↓CloseModal [ngx.components.UIDynamicAction-1615222852559]: 
+        beanData: '{"ionBean":"CloseModalAction","data":"script:{sessionName: this.sessionName}"}'
+        ↓Log [ngx.components.UIDynamicAction-1615223168774]: 
+          beanData: '{"ionBean":"LogAction","message":"plain:modal closed"}'
+  ↓Button1 [ngx.components.UIDynamicElement-1604829580852]: 
+    beanData: '{"ionBean":"Button"}'
+    tagName: ion-button
+    ↓Text [ngx.components.UIText-1604829589988]: 
+      i18n: false
+      textValue: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+          - MobileSmartSourceType: plain:Cancel
+    ↓Event [ngx.components.UIControlEvent-1604829653243]: 
+      ↓CloseModal [ngx.components.UIDynamicAction-1604829653246]: 
+        beanData: '{"ionBean":"CloseModalAction"}'

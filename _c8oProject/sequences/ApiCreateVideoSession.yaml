@@ -1,0 +1,30 @@
+accessibility: Hidden
+comment: Creates a video session and returns it. Should be saved in a FS database
+↓createVideoSession [steps.SimpleStep-1604513680208]: 
+  expression: |
+    ot = com.opentok.OpenTok.Builder(apiKey, apiSecret)
+    				.requestTimeout(10000)
+    				.build();
+    
+    session = ot.createSession(new com.opentok.SessionProperties.Builder()
+    				.mediaMode(com.opentok.MediaMode.ROUTED)
+    				.build());
+    
+    jSessionID = session.getSessionId();
+    
+    ot.close();
+    
+↓jElement [steps.ElementStep-1604668973224]: 
+  expression: jSessionID
+  nodeName: sessionID
+↓jElement1 [steps.ElementStep-1604733393296]: 
+  expression: apiKey
+  nodeName: apiKey
+↓apiKey [variables.RequestableVariable-1604513866988]: 
+  value: ${lib_Vonage_Ngx.video.apiKey}
+↓apiSecret [variables.RequestableVariable-1604513874282]: 
+  value: 
+    - ↑ciphered: true
+    - ↑traceable: false
+    - →→: x3a261a5d0f644bcca7cfbaf7889a0f0377396bd9172c0b94051c2a3b21e6acde2f3863741648bc3c57cf56062962fa2e
+  visibility: '-1'

@@ -1,0 +1,17 @@
+accessibility: Private
+comment: Used for Messaging APIs
+↓buildAuthorization [steps.SimpleStep-1604058025220]: 
+  expression: |
+    jAuthorization = "Basic " + com.twinsoft.convertigo.engine.util.Base64.encodeString(apiKey + ":" + apiSecret);
+    
+↓jElement1 [steps.ElementStep-1604058241274]: 
+  expression: jAuthorization
+  nodeName: Authorization
+↓apiKey [variables.RequestableVariable-1604057806009]: 
+  value: ${lib_Vonage_Ngx.apiKey}
+↓apiSecret [variables.RequestableVariable-1604057812950]: 
+  value: 
+    - ↑ciphered: true
+    - ↑traceable: false
+    - →→: x3a261a5d0f644bcca7cfbaf7889a0f03d043d766a4204f3ff895d5ffcd146001b36a753482fa17708cf746c34ca8b60a
+  visibility: '-1'

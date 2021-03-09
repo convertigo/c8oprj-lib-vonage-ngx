@@ -1,0 +1,327 @@
+↓CtrlDivInit [ngx.components.UIDynamicElement-1604934105091]: 
+  beanData: '{"ionBean":"DivTag"}'
+  identifier: opentok
+  tagName: div
+  ↓Event [ngx.components.UIControlEvent-1604916937522]: 
+    attrName: (blur)
+    eventName: (blur)
+    ↓useOpenTok [ngx.components.UICustomAction-1604075099202]: 
+      actionValue: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.common.FormatedContent
+          - com.twinsoft.convertigo.beans.common.FormatedContent: 
+            →: |
+              '            page.c8o.log.debug(''[OpenTok] token     : '' + vars.token);
+                          page.c8o.log.debug(''[OpenTok] apiKey    : '' + vars.apiKey);
+                          page.c8o.log.debug(''[OpenTok] sessionId : '' + vars.sessionId);
+                          page.c8o.log.debug(''[OpenTok] mode      : '' + vars.mode);
+              
+              		    
+                  		function handleError(error) {
+                  		    if (error) {
+                                  page.c8o.log.error(''[OpenTok] error : '' + error.message);
+                  		    }
+                  		}
+                  		
+                  		var session = OT.initSession(vars.apiKey, vars.sessionId);
+                  		
+                  		if (vars.mode == "subscriber") {
+                      		session.on(''streamCreated'', function(event) {
+                      		     session.subscribe(event.stream, ''subscriber'', {
+                      		       insertMode: ''append'',
+                      		       width: ''100%'',
+                      		       height: ''100%''
+                      		     }, handleError);
+                                   resolve();
+                      		});
+                      		
+                              session.connect(vars.token, function(error) {
+                                  if (error) {
+                                      handleError(error);
+                                  }
+                                  resolve();
+                              });
+                  		}
+                  		
+                          if (vars.mode == "publisher") {
+                      		const publisher = OT.initPublisher(''publisher'', {
+                      		        insertMode: ''append'',
+                      		        width: ''100%'',
+                      		        height: ''100%''
+                      		}, handleError)
+                      		
+                              // Connect to the session
+                              session.connect(vars.token, function(error) {
+                                  // If the connection is successful, initialize a publisher and publish to the session
+                                  if (error) {
+                                      handleError(error);
+                                  } else {
+                                      session.publish(publisher, handleError);
+                                  }
+                                  resolve();
+                              });
+                          }
+              
+                          if (vars.mode == "moderator") {
+                              resolve();
+                          }
+              '
+      module_ts_imports: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+          - com.twinsoft.convertigo.beans.common.XMLVector: 
+            - xmlizable: 
+              - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+              - com.twinsoft.convertigo.beans.common.XMLVector: 
+                - java.lang.String: 
+                  - ↑value: '* as OT'
+                - java.lang.String: 
+                  - ↑value: '@opentok/client'
+      package_dependencies: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+          - com.twinsoft.convertigo.beans.common.XMLVector: 
+            - xmlizable: 
+              - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+              - com.twinsoft.convertigo.beans.common.XMLVector: 
+                - java.lang.String: 
+                  - ↑value: '@opentok/client'
+                - java.lang.String: 
+                  - ↑value: 2.18.1
+      page_ts_imports: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+          - com.twinsoft.convertigo.beans.common.XMLVector: 
+            - xmlizable: 
+              - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+              - com.twinsoft.convertigo.beans.common.XMLVector: 
+                - java.lang.String: 
+                  - ↑value: '* as OT'
+                - java.lang.String: 
+                  - ↑value: '@opentok/client'
+      ↓apiKey [ngx.components.UIControlVariable-1604079551362]: 
+        varValue: 
+          - xmlizable: 
+            - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+            - MobileSmartSourceType: script:params1604074988538.apiKey
+      ↓sessionId [ngx.components.UIControlVariable-1604079564607]: 
+        varValue: 
+          - xmlizable: 
+            - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+            - MobileSmartSourceType: script:params1604074988538.sessionId
+      ↓token [ngx.components.UIControlVariable-1604079900661]: 
+        varValue: 
+          - xmlizable: 
+            - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+            - MobileSmartSourceType: script:params1604074988538.token
+      ↓mode [ngx.components.UIControlVariable-1604749769355]: 
+        varValue: 
+          - xmlizable: 
+            - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+            - MobileSmartSourceType: script:params1604074988538.mode
+  ↓Attr [ngx.components.UIAttribute-1604934201362]: 
+    attrName: id
+    attrValue: 
+      - xmlizable: 
+        - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+        - MobileSmartSourceType: plain:opentok
+↓sessionId [ngx.components.UICompVariable-1604744486619]: 
+  comment: The sessionId
+↓token [ngx.components.UICompVariable-1604744505461]: 
+  comment: The token for connection
+↓apiKey [ngx.components.UICompVariable-1604749645826]: 
+  comment: The apiKey as declared in the API portal
+↓CtrlDivLeave [ngx.components.UIDynamicElement-1604938486108]: 
+  beanData: '{"ionBean":"DivTag"}'
+  identifier: opentokleave
+  tagName: div
+  ↓Event [ngx.components.UIControlEvent-1604938486111]: 
+    attrName: (blur)
+    eventName: (blur)
+    ↓LeaveOpenTok [ngx.components.UICustomAction-1604938486114]: 
+      actionValue: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.common.FormatedContent
+          - com.twinsoft.convertigo.beans.common.FormatedContent: 
+            →: |
+              '            page.c8o.log.debug(''[OpenTok] token     : '' + vars.token);
+                          page.c8o.log.debug(''[OpenTok] apiKey    : '' + vars.apiKey);
+                          page.c8o.log.debug(''[OpenTok] sessionId : '' + vars.sessionId);
+                          page.c8o.log.debug(''[OpenTok] mode      : '' + vars.mode);
+              
+              		    
+                  		function handleError(error) {
+                  		    if (error) {
+                                  page.c8o.log.error(''[OpenTok] error : '' + error.message);
+                  		    }
+                  		}
+                  		
+                  		var session = OT.initSession(vars.apiKey, vars.sessionId);
+                  		
+                  		if (vars.mode == "subscriber") {
+                              session.disconnect()
+                              resolve();
+                  		}
+                  		
+                          if (vars.mode == "publisher") {
+                              session.disconnect()
+                              resolve();
+                          }
+              
+                          if (vars.mode == "moderator") {
+                              resolve();
+                          }
+              '
+      module_ts_imports: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+          - com.twinsoft.convertigo.beans.common.XMLVector: 
+            - xmlizable: 
+              - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+              - com.twinsoft.convertigo.beans.common.XMLVector: 
+                - java.lang.String: 
+                  - ↑value: '* as OT'
+                - java.lang.String: 
+                  - ↑value: '@opentok/client'
+      package_dependencies: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+          - com.twinsoft.convertigo.beans.common.XMLVector: 
+            - xmlizable: 
+              - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+              - com.twinsoft.convertigo.beans.common.XMLVector: 
+                - java.lang.String: 
+                  - ↑value: '@opentok/client'
+                - java.lang.String: 
+                  - ↑value: 2.18.1
+      page_ts_imports: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+          - com.twinsoft.convertigo.beans.common.XMLVector: 
+            - xmlizable: 
+              - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+              - com.twinsoft.convertigo.beans.common.XMLVector: 
+                - java.lang.String: 
+                  - ↑value: '* as OT'
+                - java.lang.String: 
+                  - ↑value: '@opentok/client'
+      ↓apiKey [ngx.components.UIControlVariable-1604938486117]: 
+        varValue: 
+          - xmlizable: 
+            - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+            - MobileSmartSourceType: script:params1604074988538.apiKey
+      ↓sessionId [ngx.components.UIControlVariable-1604938486120]: 
+        varValue: 
+          - xmlizable: 
+            - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+            - MobileSmartSourceType: script:params1604074988538.sessionId
+      ↓token [ngx.components.UIControlVariable-1604938486123]: 
+        varValue: 
+          - xmlizable: 
+            - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+            - MobileSmartSourceType: script:params1604074988538.token
+      ↓mode [ngx.components.UIControlVariable-1604938486126]: 
+        varValue: 
+          - xmlizable: 
+            - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+            - MobileSmartSourceType: script:params1604074988538.mode
+  ↓Attr [ngx.components.UIAttribute-1604938486129]: 
+    attrName: id
+    attrValue: 
+      - xmlizable: 
+        - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+        - MobileSmartSourceType: plain:opentokleave
+↓mode [ngx.components.UICompVariable-1604859987359]: 
+  comment: The mode. can be publisher, subscriber or moderator. Default is publisher
+  value: '''publisher'''
+↓PageEvent [ngx.components.UIPageEvent-1604915813759]: 
+  ↓findOpenTokDivAndInit [ngx.components.UICustomAction-1604926852558]: 
+    actionValue: 
+      - xmlizable: 
+        - ↑classname: com.twinsoft.convertigo.beans.common.FormatedContent
+        - com.twinsoft.convertigo.beans.common.FormatedContent: 
+          →: |
+            '    		page.c8o.log.debug(''[MB] ''+ props.actionFunction +'': ''+ props.actionName);
+                        setTimeout(()=> {
+                            page["opentok"].nativeElement.dispatchEvent(new MouseEvent(''blur'', {
+                                view: window,
+                                bubbles: true,
+                                cancelable: true
+                            }));
+                            // page.c8o.log.debug(''[MB] *** click done :'' );
+                        }, 0)
+                		resolve();
+            '
+    comment: |
+      This will find the OpenTokDiv and Simulate a blur event on it to trigger the OpenTok CustomAction installing the video. We have to do it this way as we cannot use paramXXXXXX.property in Page Events.
+      
+↓Directive [ngx.components.UIControlDirective-1604934229228]: 
+  directiveName: If
+  directiveSource: 
+    - xmlizable: 
+      - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+      - MobileSmartSourceType: script:params1604074988538.mode == 'publisher'
+  ↓DivPublisher [ngx.components.UIDynamicElement-1604078553712]: 
+    beanData: '{"ionBean":"DivTag"}'
+    identifier: publisher
+    tagName: div
+    ↓Attr [ngx.components.UIAttribute-1604079195417]: 
+      attrName: id
+      attrValue: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+          - MobileSmartSourceType: plain:publisher
+    ↓Style [ngx.components.UIStyle-1604079255194]: 
+      styleContent: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.common.FormatedContent
+          - com.twinsoft.convertigo.beans.common.FormatedContent: 
+            →: |
+              '	height: 100%
+              '
+↓Directive1 [ngx.components.UIControlDirective-1604936378950]: 
+  directiveName: If
+  directiveSource: 
+    - xmlizable: 
+      - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+      - MobileSmartSourceType: script:params1604074988538.mode == 'subscriber'
+  ↓DivSubscriber [ngx.components.UIDynamicElement-1604936378965]: 
+    beanData: '{"ionBean":"DivTag"}'
+    identifier: subscriber
+    tagName: div
+    ↓Attr [ngx.components.UIAttribute-1604936378968]: 
+      attrName: id
+      attrValue: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+          - MobileSmartSourceType: plain:subscriber
+    ↓Style [ngx.components.UIStyle-1604936378971]: 
+      styleContent: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.common.FormatedContent
+          - com.twinsoft.convertigo.beans.common.FormatedContent: 
+            →: |
+              '	height: 100%;
+              	display: grid
+              '
+↓PageEvent1 [ngx.components.UIPageEvent-1604938421535]: 
+  viewEvent: onWillLeave
+  ↓findOpenTokDivAndQuit [ngx.components.UICustomAction-1604938448125]: 
+    actionValue: 
+      - xmlizable: 
+        - ↑classname: com.twinsoft.convertigo.beans.common.FormatedContent
+        - com.twinsoft.convertigo.beans.common.FormatedContent: 
+          →: |
+            '    		page.c8o.log.debug(''[MB] ''+ props.actionFunction +'': ''+ props.actionName);
+            
+                        page["opentokleave"].nativeElement.dispatchEvent(new MouseEvent(''blur'', {
+                            view: window,
+                            bubbles: true,
+                            cancelable: true
+                        }));
+                        // page.c8o.log.debug(''[LeaveOT] ''+ page["opentokleave"].nativeElement.innerHTML);
+                		resolve();
+            '
+    comment: |
+      This will find the OpenTokDiv and Simulate a blur event on it to trigger the OpenTok CustomAction closing  the video. We have to do it this way as we cannot use paramXXXXXX.property in Page Events.
+      

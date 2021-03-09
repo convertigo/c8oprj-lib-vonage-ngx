@@ -1,0 +1,31 @@
+beanData: '{"ionBean":"Menu"}'
+tagName: ion-menu
+↓Header [ngx.components.UIDynamicElement-1605082635796]: 
+  beanData: '{"ionBean":"Header"}'
+  tagName: ion-header
+  ↓ToolBar [ngx.components.UIDynamicElement-1605082635799]: 
+    beanData: '{"ionBean":"ToolBar","IonColor":"plain:primary"}'
+    tagName: ion-toolbar
+    ↓BarTitle [ngx.components.UIDynamicElement-1605082635802]: 
+      beanData: '{"ionBean":"BarTitle"}'
+      tagName: ion-title
+      ↓Text [ngx.components.UIText-1605082635805]: 
+        textValue: 
+          - xmlizable: 
+            - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+            - MobileSmartSourceType: plain:My Menu
+↓Content [ngx.components.UIDynamicElement-1605082635808]: 
+  beanData: '{"ionBean":"Content"}'
+  tagName: ion-content
+  ↓List [ngx.components.UIDynamicElement-1605082635811]: 
+    beanData: |
+      '{
+       "ionBean": "List",
+       "Inset": "plain:true",
+       "Lines": "plain:none"
+      }'
+    tagName: ion-list
+    ↓MenuAutoItems [ngx.components.UIDynamicMenuItems-1605082635814]: 
+      beanData: '{"ionBean":"MenuAutoItems"}'
+      itemtitle: 
+      tagName: ion-menu-toggle

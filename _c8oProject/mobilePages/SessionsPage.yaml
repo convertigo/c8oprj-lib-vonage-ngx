@@ -22,13 +22,13 @@ title: Session manager
         beanData: |
           '{
            "ionBean": "ModalAction",
-           "page": "plain:lib_Vonage_Ngx.Mobile_application.Application.AskSessionPage",
+           "page": "plain:lib_Vonage_ui_ngx.Mobile_application.Application.AskSessionPage",
            "blockWhileDisplayed": "plain:true"
           }'
         ↓IfElse [ngx.components.UIDynamicIf-1604830001070]: 
           beanData: '{"ionBean":"IfElseAction","condition":"script:out != undefined"}'
           ↓CallSequenceAppCreateVideoSession [ngx.components.UIDynamicAction-1604830037541]: 
-            beanData: '{"ionBean":"CallSequenceAction","requestable":"plain:lib_Vonage_Ngx.AppCreateVideoSession"}'
+            beanData: '{"ionBean":"CallSequenceAction","requestable":"plain:lib_Vonage.AppCreateVideoSession"}'
             ↓name [ngx.components.UIControlVariable-1604830062088]: 
               comment: new variable
               varValue: 
@@ -36,7 +36,7 @@ title: Session manager
                   - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
                   - MobileSmartSourceType: script:stack['ModalPage'].out.data.sessionName
             ↓CallSequenceListVideoSessions [ngx.components.UIDynamicAction-1604842529193]: 
-              beanData: '{"ionBean":"CallSequenceAction","requestable":"plain:lib_Vonage_Ngx.ApplistAvailableVideoSessions"}'
+              beanData: '{"ionBean":"CallSequenceAction","requestable":"plain:lib_Vonage.ApplistAvailableVideoSessions"}'
           ↓Log [ngx.components.UIDynamicAction-1615223479077]: 
             beanData: '{"ionBean":"LogAction","message":"script:''session name:''+stack[''ModalPage''].out.data.sessionName"}'
             isEnabled: false
@@ -122,7 +122,7 @@ title: Session manager
       directiveSource: 
         - xmlizable: 
           - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-          - MobileSmartSourceType: source:{"filter":"Sequence","project":"lib_Vonage_Ngx","input":"listen(['lib_Vonage_Ngx.ApplistAvailableVideoSessions'])?.rows"}
+          - MobileSmartSourceType: source:{"filter":"Sequence","project":"lib_Vonage","input":"listen(['lib_Vonage.ApplistAvailableVideoSessions'])?.rows"}
       ↓SlidingContainer [ngx.components.UIDynamicElement-1615224878715]: 
         beanData: '{"ionBean":"SlidingContainer"}'
         tagName: ion-item-sliding
@@ -139,15 +139,15 @@ title: Session manager
                   - MobileSmartSourceType: plain:delete
             ↓Event [ngx.components.UIControlEvent-1615225663802]: 
               ↓CallSequenceAppRemoveVideoSession [ngx.components.UIDynamicAction-1615225810201]: 
-                beanData: '{"ionBean":"CallSequenceAction","requestable":"plain:lib_Vonage_Ngx.AppRemoveVideoSession"}'
+                beanData: '{"ionBean":"CallSequenceAction","requestable":"plain:lib_Vonage.AppRemoveVideoSession"}'
                 ↓CallSequenceListVideoSessions [ngx.components.UIDynamicAction-1615225810204]: 
-                  beanData: '{"ionBean":"CallSequenceAction","requestable":"plain:lib_Vonage_Ngx.ApplistAvailableVideoSessions"}'
+                  beanData: '{"ionBean":"CallSequenceAction","requestable":"plain:lib_Vonage.ApplistAvailableVideoSessions"}'
                 ↓sessionName [ngx.components.UIControlVariable-1615225810207]: 
                   comment: new variable
                   varValue: 
                     - xmlizable: 
                       - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-                      - MobileSmartSourceType: source:{"filter":"Iteration","project":"lib_Vonage_Ngx","input":"item1604828803946?.id"}
+                      - MobileSmartSourceType: source:{"filter":"Iteration","project":"lib_Vonage_ui_ngx","input":"item1604828803946?.id"}
         ↓GenericItem [ngx.components.UIDynamicElement-1615225467595]: 
           beanData: '{"ionBean":"GenericItem","Button":"plain:true"}'
           tagName: ion-item
@@ -156,14 +156,14 @@ title: Session manager
               beanData: |
                 '{
                  "ionBean": "PushPageAction",
-                 "page": "plain:lib_Vonage_Ngx.Mobile_application.Application.VideoPagePublish",
-                 "data": "source:{\"filter\":\"Iteration\",\"project\":\"lib_Vonage_Ngx\",\"input\":\"item1604828803946?.value\"}"
+                 "page": "plain:lib_Vonage_ui_ngx.Mobile_application.Application.VideoPagePublish",
+                 "data": "source:{\"filter\":\"Iteration\",\"project\":\"lib_Vonage_ui_ngx\",\"input\":\"item1604828803946?.value\"}"
                 }'
           ↓Text [ngx.components.UIText-1615226329893]: 
             textValue: 
               - xmlizable: 
                 - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-                - MobileSmartSourceType: source:{"filter":"Iteration","project":"lib_Vonage_Ngx","input":"item1604828803946?.id"}
+                - MobileSmartSourceType: source:{"filter":"Iteration","project":"lib_Vonage_ui_ngx","input":"item1604828803946?.id"}
         ↓SlidingButtonSet1 [ngx.components.UIDynamicElement-1615225484052]: 
           beanData: '{"ionBean":"SlidingButtonSet"}'
           tagName: ion-item-options
@@ -180,8 +180,8 @@ title: Session manager
                 beanData: |
                   '{
                    "ionBean": "PushPageAction",
-                   "page": "plain:lib_Vonage_Ngx.Mobile_application.Application.VideoPagePublish",
-                   "data": "source:{\"filter\":\"Iteration\",\"project\":\"lib_Vonage_Ngx\",\"input\":\"item1604828803946?.value\"}"
+                   "page": "plain:lib_Vonage_ui_ngx.Mobile_application.Application.VideoPagePublish",
+                   "data": "source:{\"filter\":\"Iteration\",\"project\":\"lib_Vonage_ui_ngx\",\"input\":\"item1604828803946?.value\"}"
                   }'
           ↓SlidingButton1 [ngx.components.UIDynamicElement-1615225484061]: 
             beanData: '{"ionBean":"SlidingButton","IonColor":"plain:success"}'
@@ -196,14 +196,14 @@ title: Session manager
                 beanData: |
                   '{
                    "ionBean": "PushPageAction",
-                   "page": "plain:lib_Vonage_Ngx.Mobile_application.Application.VideoPageSubscribe",
-                   "data": "source:{\"filter\":\"Iteration\",\"project\":\"lib_Vonage_Ngx\",\"input\":\"item1604828803946?.value\"}"
+                   "page": "plain:lib_Vonage_ui_ngx.Mobile_application.Application.VideoPageSubscribe",
+                   "data": "source:{\"filter\":\"Iteration\",\"project\":\"lib_Vonage_ui_ngx\",\"input\":\"item1604828803946?.value\"}"
                   }'
 ↓PageEvent [ngx.components.UIPageEvent-1604750314474]: 
   ↓CallSequenceListVideoSessions [ngx.components.UIDynamicAction-1604750320818]: 
-    beanData: '{"ionBean":"CallSequenceAction","requestable":"plain:lib_Vonage_Ngx.ApplistAvailableVideoSessions"}'
+    beanData: '{"ionBean":"CallSequenceAction","requestable":"plain:lib_Vonage.ApplistAvailableVideoSessions"}'
   ↓CallSequenceGetVideoApiKey [ngx.components.UIDynamicAction-1604846039677]: 
-    beanData: '{"ionBean":"CallSequenceAction","requestable":"plain:lib_Vonage_Ngx.ApiGetVideoApiKey"}'
+    beanData: '{"ionBean":"CallSequenceAction","requestable":"plain:lib_Vonage.ApiGetVideoApiKey"}'
     ↓SetGlobal [ngx.components.UIDynamicAction-1604846068573]: 
       beanData: |
         '{

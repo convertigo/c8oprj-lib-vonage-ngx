@@ -1,24 +1,12 @@
 ↑convertigo: 8.0.0.m006
-↓lib_Vonage_Ngx [core.Project]: 
+↓lib_Vonage_ui_ngx [core.Project]: 
   comment: The Vonage communication connector library for SMS, Whatsapp, Viber, facebook messenger and MMS. Also provides API and Shared Components for Video sessions
   version: 2.0.0
-  ↓lib_vonage_fullsync [connectors.FullSyncConnector]: 🗏 connectors/lib_vonage_fullsync.yaml
-  ↓Messages_API [connectors.HttpConnector]: 🗏 connectors/Messages_API.yaml
-  ↓Video_API [connectors.HttpConnector]: 🗏 connectors/Video_API.yaml
   ↓void [connectors.SqlConnector]: 🗏 connectors/void.yaml
-  ↓ApiCreateVideoSession [sequences.GenericSequence]: 🗏 sequences/ApiCreateVideoSession.yaml
-  ↓ApiGetVideoApiKey [sequences.GenericSequence]: 🗏 sequences/ApiGetVideoApiKey.yaml
-  ↓ApiGetVideoToken [sequences.GenericSequence]: 🗏 sequences/ApiGetVideoToken.yaml
-  ↓ApiSendSMS [sequences.GenericSequence]: 🗏 sequences/ApiSendSMS.yaml
-  ↓ApiSendWhatsapp [sequences.GenericSequence]: 🗏 sequences/ApiSendWhatsapp.yaml
-  ↓AppCreateVideoSession [sequences.GenericSequence]: 🗏 sequences/AppCreateVideoSession.yaml
-  ↓ApplistAvailableVideoSessions [sequences.GenericSequence]: 🗏 sequences/ApplistAvailableVideoSessions.yaml
-  ↓AppRemoveVideoSession [sequences.GenericSequence]: 🗏 sequences/AppRemoveVideoSession.yaml
-  ↓buildAuthorization [sequences.GenericSequence]: 🗏 sequences/buildAuthorization.yaml
-  ↓CouchDb_schema [references.ImportXsdSchemaReference]: 
-    urlpath: http://localhost:18080/convertigo/xsd/couchdb/CouchDb.xsd
   ↓Project_reference1 [references.ProjectSchemaReference]: 
     projectName: mobilebuilder_tpl_8_0_0_ngx=https://github.com/convertigo/c8oprj-mobilebuilder-tpl/archive/mobilebuilder_tpl_8_0_0_ngx.zip
+  ↓Project_reference3 [references.ProjectSchemaReference]: 
+    projectName: lib_Vonage=https://github.com/convertigo/c8oprj-lib-vonage.git:branch=7.9.0
   ↓Mobile_application [core.MobileApplication]: 
     endpoint: https://pedro.convertigo.net
     ↓Android [mobileplatforms.Android]: 

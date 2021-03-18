@@ -51,7 +51,7 @@ title: Video publisher
 ↓PageEvent [ngx.components.UIPageEvent-1604828684423]: 
   viewEvent: onWillEnter
   ↓CallSequenceGetVideoToken [ngx.components.UIDynamicAction-1604846281871]: 
-    beanData: '{"ionBean":"CallSequenceAction","requestable":"plain:lib_Vonage_Ngx.ApiGetVideoToken"}'
+    beanData: '{"ionBean":"CallSequenceAction","requestable":"plain:lib_Vonage.ApiGetVideoToken"}'
     ↓role [ngx.components.UIControlVariable-1604846349764]: 
       comment: new variable
       varValue: 
@@ -92,7 +92,7 @@ title: Video publisher
         beanData: '{"ionBean":"GridCol","SizeXs":"plain:10"}'
         tagName: ion-col
         ↓UseSharedComponent [ngx.components.UIUseShared-1604854266097]: 
-          sharedcomponent: lib_Vonage_Ngx.Mobile_application.Application.VonageVideo
+          sharedcomponent: lib_Vonage_ui_ngx.Mobile_application.Application.VonageVideo
           ↓sessionId [ngx.components.UIControlVariable-1604854278505]: 
             comment: The sessionId
             varValue: 
@@ -104,13 +104,13 @@ title: Video publisher
             varValue: 
               - xmlizable: 
                 - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-                - MobileSmartSourceType: source:{"filter":"Sequence","project":"lib_Vonage_Ngx","input":"listen(['lib_Vonage_Ngx.ApiGetVideoToken'])?.token"}
+                - MobileSmartSourceType: source:{"filter":"Sequence","project":"lib_Vonage","input":"listen(['lib_Vonage.ApiGetVideoToken'])?.token"}
           ↓apiKey [ngx.components.UIControlVariable-1604854278509]: 
             comment: The apiKey as declared in the API portal
             varValue: 
               - xmlizable: 
                 - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-                - MobileSmartSourceType: source:{"filter":"Global","project":"lib_Vonage_Ngx","input":"router.sharedObject?.videoApiKey"}
+                - MobileSmartSourceType: source:{"filter":"Global","project":"lib_Vonage_ui_ngx","input":"router.sharedObject?.videoApiKey"}
           ↓mode [ngx.components.UIControlVariable-1604854278511]: 
             comment: The mode, can be publisher, subscriber or moderator
             varValue: 

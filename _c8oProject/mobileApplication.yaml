@@ -1,6 +1,6 @@
 tplProjectName: mobilebuilder_tpl_8_0_0_ngx
 ↓Menu [ngx.components.UIDynamicMenu-1604074900896]: 🗏 mobileMenus/Menu.yaml
-↓VonageVideo [ngx.components.UISharedComponent-1604074988538]: 🗏 mobileSharedComponents/VonageVideo.yaml
+↓VonageVideo [ngx.components.UISharedRegularComponent-1604074988538]: 🗏 mobileSharedComponents/VonageVideo.yaml
 ↓SessionsPage [ngx.components.PageComponent-1604074906869]: 🗏 mobilePages/SessionsPage.yaml
 ↓VideoPagePublish [ngx.components.PageComponent-1604828089911]: 🗏 mobilePages/VideoPagePublish.yaml
 ↓VideoPageSubscribe [ngx.components.PageComponent-1604935551023]: 🗏 mobilePages/VideoPageSubscribe.yaml

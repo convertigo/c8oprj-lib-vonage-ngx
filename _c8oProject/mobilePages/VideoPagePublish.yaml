@@ -93,25 +93,25 @@ title: Video publisher
         tagName: ion-col
         ↓UseSharedComponent [ngx.components.UIUseShared-1604854266097]: 
           sharedcomponent: lib_Vonage_ui_ngx.Mobile_application.Application.VonageVideo
-          ↓sessionId [ngx.components.UIControlVariable-1604854278505]: 
+          ↓sessionId [ngx.components.UIUseVariable-1604854278505]: 
             comment: The sessionId
             varValue: 
               - xmlizable: 
                 - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
                 - MobileSmartSourceType: script:this.navParams.data
-          ↓token [ngx.components.UIControlVariable-1604854278507]: 
+          ↓token [ngx.components.UIUseVariable-1604854278507]: 
             comment: The token for connection
             varValue: 
               - xmlizable: 
                 - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
                 - MobileSmartSourceType: source:{"filter":"Sequence","project":"lib_Vonage","input":"listen(['lib_Vonage.ApiGetVideoToken'])?.token"}
-          ↓apiKey [ngx.components.UIControlVariable-1604854278509]: 
+          ↓apiKey [ngx.components.UIUseVariable-1604854278509]: 
             comment: The apiKey as declared in the API portal
             varValue: 
               - xmlizable: 
                 - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
                 - MobileSmartSourceType: source:{"filter":"Global","project":"lib_Vonage_ui_ngx","input":"router.sharedObject?.videoApiKey"}
-          ↓mode [ngx.components.UIControlVariable-1604854278511]: 
+          ↓mode [ngx.components.UIUseVariable-1604854278511]: 
             comment: The mode, can be publisher, subscriber or moderator
             varValue: 
               - xmlizable: 

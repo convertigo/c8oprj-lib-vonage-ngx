@@ -103,22 +103,22 @@
         varValue: 
           - xmlizable: 
             - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-            - MobileSmartSourceType: script:params1604074988538.apiKey
+            - MobileSmartSourceType: script:this.apiKey
       ↓sessionId [ngx.components.UIControlVariable-1604079564607]: 
         varValue: 
           - xmlizable: 
             - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-            - MobileSmartSourceType: script:params1604074988538.sessionId
+            - MobileSmartSourceType: script:this.sessionId
       ↓token [ngx.components.UIControlVariable-1604079900661]: 
         varValue: 
           - xmlizable: 
             - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-            - MobileSmartSourceType: script:params1604074988538.token
+            - MobileSmartSourceType: script:this.token
       ↓mode [ngx.components.UIControlVariable-1604749769355]: 
         varValue: 
           - xmlizable: 
             - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-            - MobileSmartSourceType: script:params1604074988538.mode
+            - MobileSmartSourceType: script:this.mode
   ↓Attr [ngx.components.UIAttribute-1604934201362]: 
     attrName: id
     attrValue: 
@@ -209,22 +209,22 @@
         varValue: 
           - xmlizable: 
             - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-            - MobileSmartSourceType: script:params1604074988538.apiKey
+            - MobileSmartSourceType: script:this.apiKey
       ↓sessionId [ngx.components.UIControlVariable-1604938486120]: 
         varValue: 
           - xmlizable: 
             - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-            - MobileSmartSourceType: script:params1604074988538.sessionId
+            - MobileSmartSourceType: script:this.sessionId
       ↓token [ngx.components.UIControlVariable-1604938486123]: 
         varValue: 
           - xmlizable: 
             - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-            - MobileSmartSourceType: script:params1604074988538.token
+            - MobileSmartSourceType: script:this.token
       ↓mode [ngx.components.UIControlVariable-1604938486126]: 
         varValue: 
           - xmlizable: 
             - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-            - MobileSmartSourceType: script:params1604074988538.mode
+            - MobileSmartSourceType: script:this.mode
   ↓Attr [ngx.components.UIAttribute-1604938486129]: 
     attrName: id
     attrValue: 
@@ -260,7 +260,7 @@
   directiveSource: 
     - xmlizable: 
       - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-      - MobileSmartSourceType: script:params1604074988538.mode == 'publisher'
+      - MobileSmartSourceType: script:this.mode == 'publisher'
   ↓DivPublisher [ngx.components.UIDynamicElement-1604078553712]: 
     beanData: '{"ionBean":"DivTag"}'
     identifier: publisher
@@ -284,7 +284,7 @@
   directiveSource: 
     - xmlizable: 
       - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-      - MobileSmartSourceType: script:params1604074988538.mode == 'subscriber'
+      - MobileSmartSourceType: script:this.mode == 'subscriber'
   ↓DivSubscriber [ngx.components.UIDynamicElement-1604936378965]: 
     beanData: '{"ionBean":"DivTag"}'
     identifier: subscriber

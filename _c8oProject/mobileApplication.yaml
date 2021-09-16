@@ -1,7 +1,13 @@
 tplProjectName: mobilebuilder_tpl_8_0_0_ngx
 ↓Menu [ngx.components.UIDynamicMenu-1604074900896]: 🗏 mobileMenus/Menu.yaml
+↓SharedAction [ngx.components.UIActionStack-1620306204531]: 🗏 mobileSharedActions/SharedAction.yaml
+↓initAndCreate [ngx.components.UIActionStack-1620306642547]: 🗏 mobileSharedActions/initAndCreate.yaml
+↓initOpenTok [ngx.components.UIActionStack-1620306731231]: 🗏 mobileSharedActions/initOpenTok.yaml
+↓modalVideoCall [ngx.components.UIActionStack-1620307352727]: 🗏 mobileSharedActions/modalVideoCall.yaml
+↓disconnectFromSession [ngx.components.UIActionStack-1620744198968]: 🗏 mobileSharedActions/disconnectFromSession.yaml
 ↓VonageVideo [ngx.components.UISharedRegularComponent-1604074988538]: 🗏 mobileSharedComponents/VonageVideo.yaml
 ↓SessionsPage [ngx.components.PageComponent-1604074906869]: 🗏 mobilePages/SessionsPage.yaml
 ↓VideoPagePublish [ngx.components.PageComponent-1604828089911]: 🗏 mobilePages/VideoPagePublish.yaml
 ↓VideoPageSubscribe [ngx.components.PageComponent-1604935551023]: 🗏 mobilePages/VideoPageSubscribe.yaml
 ↓AskSessionPage [ngx.components.PageComponent-1604829479954]: 🗏 mobilePages/AskSessionPage.yaml
+↓Page [ngx.components.PageComponent-1620308534347]: 🗏 mobilePages/Page.yaml

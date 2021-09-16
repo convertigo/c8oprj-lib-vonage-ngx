@@ -1,0 +1,362 @@
+↓useOpenTok [ngx.components.UICustomAction-1620306742991]: 
+  actionValue: 
+    - xmlizable: 
+      - ↑classname: com.twinsoft.convertigo.beans.common.FormatedContent
+      - com.twinsoft.convertigo.beans.common.FormatedContent: 
+        →: |
+          '			page.c8o.log.debug(''[OpenTok] token     : '' + vars.token);
+                      page.c8o.log.debug(''[OpenTok] apiKey    : '' + vars.apiKey);
+                      page.c8o.log.debug(''[OpenTok] sessionId : '' + vars.sessionId);
+                      page.c8o.log.debug(''[OpenTok] role   : '' + vars.role);
+          
+          			
+          			var publisher;
+          			var subscriber;
+          			var addmyButton = ()=>{
+          				//remove previous button extend size if exists
+          				let prev = document.getElementById("size"+vars.targetElement);
+          				if(prev){
+          					prev.remove();	
+          				}
+          				// search for navbar into subscribers layout
+          				var layout = document.getElementById("subscribersLayout"+vars.targetElement);
+          				var buttonMute = layout.getElementsByClassName("OT_edge-bar-item OT_mute OT_mode-auto");
+          				var buttonMuteArray = Array.prototype.slice.call( buttonMute );
+          				if(buttonMuteArray.length == 0){
+          					// if there is not any navbar into subscribers layout use secondLayout
+          					layout = document.getElementById("secondLayout"+vars.targetElement);
+          					buttonMute = layout.getElementsByClassName("OT_edge-bar-item OT_mute OT_mode-auto");
+          					buttonMuteArray = Array.prototype.slice.call( buttonMute );
+          				}
+          				if(buttonMuteArray.length > 0){
+          					// create button
+          					var button = buttonMuteArray[0];
+          					var currentParent = button.parentNode;
+          					var bt = document.createElement("button");
+          					bt.setAttribute("style", "width:38px;height:37px;background-image:url(''data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAMAAADzN3VRAAAPx3pUWHRSYXcgcHJvZmlsZSB0eXBlIGV4aWYAAHjarZlpliMpsoX/s4peAmCMy2E85+3gLb8/A0kxV0VWdSpD7vIBBxvuvWZu1v//3zb/4V8oOZkQc0k1Jcu/UEP1jZ1i7792vp0N5/v+qI9z7uNx8zrhOSRs5f4s6XH987h7DXA3jb34bqAyHif6xxM1PMYvnwbydyM6I92fj4HqYyDx94R7DNDusmyqJb9fQl93+7j/moE/o1+hfJz2l98Z683Ic8T7JU4s317CnYDonzPS2Il8O8EcfHv2uYjvIP4xGAb5zk723azMZ6+89twPxz85RdI9bjjw0Zjptf32uIufjj8GNMfE754s4/XkD8dHc+7zcp5/e89i9l53dS0kTJoei3ou5exxYcfkcm5LfDJ/kf18PpVPMUTvwOXTDtv5DFedxy3bBTddc9utsx1uMMXgl89svR84So8Vyb76Idbgp6Aft32WKlMKPhu4V9Rrr7m489x6Hjdc4cHTcaV3DKae9ka//hefHwfaW0MeA5eXrZiX18hiGuo5/eYqHOL2M47iMfDz8/mf+lXwYDxmLiyw2X6H6NE9YkvjSI6jhQsj25trLs/HAJiIZ0cmQ+wHZ5OT6JKz2fvsHHYs+KcxUCEffMcFLkY/maUPIgnnFK/P5p7szrU++nsYzMIRUZJkXFOl4asAsBE/ORRiqEWJIcaYYo4l1tiSpJBiSiknBb+WJYccc8o5l1xzK1JCiSWVXIoptbTqqwCOsaaaa6m1tsZDGyM37m5c0Fr3XXrosaeee+m1t0H4jDDiSCOPYkYdbfopE5yYaeZZZp1tuUUorbDiSiuvsupqm1DbssOOO+28y667vbzmzHXrl8/vveaeXvPHU3phfnmNW3N+DuEUTqL6DI/54PB4Vg8Q0F59ZosLwRt1nfrMVk9WRM8sozpnOvUYHgzL+bjdy3dvnvvgNxPCv/Kbf3rOqOv+F54z6rofPPfVb994bSrbDCvmeEjTUI1qhfTjglWaL01J7ddb8/FAb5YcyXvUwJgzg6GRKe4dUptZdpw2Fyd7BTCvpL7X8Cx072YkpmJlzd3OaDDjn21l3V3zD+5924KTxCQTHMFsZxcu6rnKypg5reV73b7nNOcmwiTNsSzQW0YC9LssNQLW3lulRm26bdWErDu+RXVA67PIcALEn8sCPvUuybl4Fp6cd2pbZGe30q6Vx6nTd+4Am9TZ66pz9eVt2w2nkQSly5DcEiNNaGQsTS7XYmxxhkxAYOvMc5fkOMb2xrkaCXpovsguaIzcRnRx6Bz2IOWWPYtorm08yR4kMtgZMQLZts7NjXsZfDjvpTZBZ3q7i8G6af9sOHPH+8vhwg5zxs5XwgFtSegz+Ol3s5EEnj62MUz3rSRCvPgYqqvAAHZcvq2ooivy/+s2j6+nzA/X/vFWB9IkvLaw9WWLKE9bZN0ZQf1Q9cga65zxYUs8Zui2DcM58MK3nZCNuHsBU2mVmdZMu8VVNzgkGiRAEsdcLDV0RMtQxLXEKop5J2fUXH+bSL/IF/P7xFpNkDjE4Rp4fS7pE7yUvqvPZRnW0Mecays7L0kjrAUTwL+tsZSYkHB9cyaWXYpTc65RQUdX8hqyIomyQUxDgK89JxnJTXtBaF3vX5peCzXXcqnoJbkTiKPvPqdvCrhxS84tOD9KHGatUqcqT0qA1QaXE5Pk5iDdH8FKwC0g7qTxTeYZc7cf/W/4jkLcRl9ySKTn7jF0KARtDdjnitoLkad4zYbQwWQf1FlKCKDNBRNstC0PmVZnvXcHnU4cOcV0jQjfqgYEyAsAEBRYLkIehQmt2UeGJ/nFIox6A01IigRwKyuRjHcovssvGcD8jir6Yg0Y60Y0RvAnonNhNb5UjSO5UJHSuQjQzXvNiZFTj6ra1Jb2GPa51buJlOnmM1EC5jA3U/JJlKhrCSDIuWTg9u1UIRfAgBkFCD0Dk2fME1GXmeqiCDVKTciGY/3ma4LZ1NnD1ufzhjBZ7N7PnCeeg92+gIr5d+ARO5WBdEdkz7BHis1BqQtQZxcgRNBsO8iEUuYAAn1JSBr4ovjcoko9otUegyMjsIWdZqQqEJEw+e01IFcec1NFwGZUITlBE9yRt9ShVBQJur5TVm4KL1Lcw/j4iRh3Z1DSryzX0SGDh4NkCsJNQQ3rulCZ0rgAmI91fTZJ4a4sxJOqsYL7kVAScpFQJ1PkwRtgY2hyZfKj5yxw5ujIwO1xWZipRKD2U5CMkyIoEfUVCXhihuw7ARgxsMIJ+gQJSfItRyGGOqPwQ223tmf1MwWklk8psLiByodAK7VZ9qtBSNBXjblaRZVF9VBaB90aSpClrNSIo9R7ZG2I1JZnXUzCLpVfHApuFYJVWufBbo+sodQpV4MA6Ng4qXkF9waDIMTCLEgFalYJgurroM9IAgb0st+ncP8xVM1brCLIlg0n43yuC2TagEU8SgQpA7qVv+CFPxNa4D8SRTFYDe3XRPYyexK0GQBxkrS+AorkPRUY7tcmjRA0XJEw8iQkI3J2X258MqNme7052rxRkkPr+vp8znUo7LB6bSDJ05/Lxbw78v7601Vopwz1p6g/DU78lIfIZ0RXfkZm3ehaDCSPyJxbfIR1TmQSe5TsGpkE5LII23h5HVLaEB4IvbRSP2G4aqDCAC4QB6jfcq8Mqn7AoqhY5jo2qvYnugYscfXQ2PGpoi/mxG6o/0hWr4XwJnbBNA1hZrQyYDZAjpKCT8yvEN+d+MF2BaKQTsriEqLPctVOLMqzTLg6w0yZFVLybDN3JLORGRQblXKKeLoLGuNsRRF59gPlSWOyfc8w5tfFxl9riGn+RkOsdZUlAbSutmwWYK8KdQsZirhQqQkeFb8RZQRJbwqeYIGWV2QRtf0EdVqKgAGOrAnkEPC5aLdS3VU1MmsD7NCpxuegghy1OjdqlfLGD6wKeEBcFHbgV0WsuuqVg7RHKESUallufMiFkUM3FAFPvcBSWFy15eoFAi2fRaEXyPD6hScFZRkU5ZAZZD+At4DCEyKjh6YpMTMlZdmKby5Lb3hZqkeFKDKtydQSwF7yzNS+U1nSGTdUganIQhyhuXo4EgxlQzmSsRYxppOuI2kRCtmSjXkuryxMtYsRQNqDR6VIjB2YrOL6cnUxTHWua5dG6xSrnVHqFOWzopWPLAVMQn84iIz5a7FgMJgWN0yrcBVjd1YxB9w2h5uA5PoIkl+2PUgYUzWkLnLMDwsc+cPylNmm101lRu1Z/K2ixiEk0aXMiBJYVcMi81WxUprAcwFsSu5meVz95HuBJVUltabl+yPcz1gAtDMMNqkk71iE38kzmPJWkMxVxwu+nWguftWrGqvOSMdjIoCbJ0WEWFCipo5qCDNLWqt6ppwiczzJhddcL5ok5I1K0PGdzcyb0bqW/MhilZwUpXledvVpJZ0WpytqJeOnObOCCHwF9zIHzSsjHXFP8BXkTaitzopUJa/ISGy/wI6A8avGPrkV0nDeLtTr0A5P0CTVvGZGZCRAS9QVtSiQAPMmwJw6SFVK7ar1I6g7eLbTPsnHdYKop0Ywvy8SvtYI+R1zPKQfdStcERBurofUASK/XAqJ/IVSCKhKdmEwLox+BC3WCCu3sO/kiWmKAQh6jp3yAtLrlAiFtPJ+1ByFW9D5NqApkgdaIPORO+KDvE+VInlbLJ+LQ+saZAVFEUzlGufiFL+il8I6t7ajILAwbks+KKYOlbFyShtEw3yhZjInbEGUA5v9Ei1hCCBycCG5l8qHWACSkXXyi+RFzAWq8Z7wo1Qm6qbBOkRBXH/Yd3qonFfLamtxvPU1Ck6sFQ+DkvcIyFfgJsJSWy6kE+ppKJ6hCoAGcmyS2HDlCnvtZkJBw66B2OxlaMOl4VYYkhx02mGxbzSbFWzIqzeaJeUcyoLQQNUqzY6IZ/pSmnXzdLhi+U4kaXdOk/obgQyLPAXy6bmim1AGQI2Kun2ApEXnI/gfMT9TYH5InDEdk4RJKmqwk2NmOKK/g1/k/AQZUb+ET1UqyxV2c9+RBzVQKehWqJAsBdbXMBKoaCm8oU+eRdkp/mjbSkAROtYJoUkFgtgdjUUf+lhPpdny7XXFZFjWdLARyO20V/WDjP5bFW2OjNY4+sfNP7kw8qZYUWQ5X6k5bsmgElq7qE5br1c/kzn7qOdb36p+pp4gLM3RPKV8AMqSccm5sERS3INAOAjuxJaOIqYJtX3t1He11yENnTCQNUTqXpAZ2BH3TzL6b1W0OTK63ZbTSYM3p0KbOw6i/OVTYIOBm3/4lIrSlZDUp9Ucp2pngvzQihqRgxXCvCU5GBnsl3qWyEQ+z/WMzDxjNxTY5YQmkUkIVLjhRiaTt6gzUTAs7qhgrWB/EsimK9Npf5kpkxFdsUhOQ+SAFyGPHkiEf01IXHIdRkR/J6lxTs2Cy+hifOqjEIPIjUWeuURpV5Dt2kxSlWNJlFR6mks1vbKIhaN6FxXMXenzENo2pXtKBnQPFQi0rLUcYVIVCxvUEaipVUBkL9hWQWKfduwizPf7NDTfND9+sXWI2vk8dALV/BSpSes8xXNtlLzaJJqgt1GCsZV37KNZEs1tZr7rlrw1S7RVQirduhslcR/Zyn0TEG6nhDFOm8x8bnlArjj1FOuC0qV6mPrbPRo55UoL7SHFeXtI+fSQjKrCYP/47cWXrfmBXrS31mZL4/bWEDNxovCfvbVKaS4hBQUIiA/xaqq9vTWrvTVFF41TtO3I4yD2RkLoGxFt1WvzF4yD3WFISQ+hQCVCKpj2VAqC9J8t+KsUNDtOuQCMqJ9+aJAxeMgK46qzV6GSPB3Lov1KCglts78vD35THZjP5QHc7pY0BkUpEyRWs0Q7d4Qya0MDiqiE8ggtlBiQxrdINhsDBTC2HUz6R/rhyAfzr3D/3dZ8IYQfr0Uy1qQhcfrvPbvWtBl3+++FyK6equDRgK/a3D09XSeoC4nZ9wtphxWfnKgpIo8U8eeljDX59f5Eldfj/cnj7QmIGN9amH+NCObPIeRbKLnvRd5dEwWVqnGbY1WRmjWMYbS+FLfJF2pG20ZrWs+dFNHEAPPM7lXr1aMxb5uOUvZ21mN4vgaK8/EaiDh+vT45privT6jTzeM1SkCBuX8znLnjfRkOEjndFSJul7TDoBRF20EBFIMZ6mW1VHajzCrBJWyEeuxIRKFyHRatT7LDA23XBMMe6HLakTm1IooOJZfK7bRoQauVihJqXEbfdJE4/J4DflIh2Ih4VX3ntcBtmLd6e0le677ZDwIrjGn9SYaBzuY0bglaqvT5bNpqS1EY8r7NbCp6w4MH/Slov4l7809E1Xcnza/u9m/te9xy2/dUhdq+11cDyvgGhj5PuS+VYVp9qaytVNQUAbZ/ywHmr0oNHlzNfwGlHxZUWQC0bAAAAYRpQ0NQSUNDIHByb2ZpbGUAAHicfZE9SMNAHMVfU4tSKw4WFHHIUJ0siIo4ShWLYKG0FVp1MLn0C5o0JCkujoJrwcGPxaqDi7OuDq6CIPgB4ubmpOgiJf4vKbSI8eC4H+/uPe7eAUKjwlSzawJQNctIxWNiNrcqdr8igF4EMQhIzNQT6cUMPMfXPXx8vYvyLO9zf44+JW8ywCcSzzHdsIg3iGc2LZ3zPnGYlSSF+Jx43KALEj9yXXb5jXPRYYFnho1Map44TCwWO1juYFYyVOJp4oiiapQvZF1WOG9xVis11ronf2Eor62kuU5zBHEsIYEkRMiooYwKLERp1UgxkaL9mId/2PEnySWTqwxGjgVUoUJy/OB/8LtbszA16SaFYkDgxbY/RoHuXaBZt+3vY9tungD+Z+BKa/urDWD2k/R6W4scAf3bwMV1W5P3gMsdYOhJlwzJkfw0hUIBeD+jb8oBA7dAcM3trbWP0wcgQ10t3wAHh8BYkbLXPd7d09nbv2da/f0AB2RyfAFpqHkAAA0YaVRYdFhNTDpjb20uYWRvYmUueG1wAAAAAAA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/Pgo8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJYTVAgQ29yZSA0LjQuMC1FeGl2MiI+CiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPgogIDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiCiAgICB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIKICAgIHhtbG5zOnN0RXZ0PSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VFdmVudCMiCiAgICB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iCiAgICB4bWxuczpHSU1QPSJodHRwOi8vd3d3LmdpbXAub3JnL3htcC8iCiAgICB4bWxuczp0aWZmPSJodHRwOi8vbnMuYWRvYmUuY29tL3RpZmYvMS4wLyIKICAgIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIKICAgeG1wTU06RG9jdW1lbnRJRD0iZ2ltcDpkb2NpZDpnaW1wOjlhYjlhYmYyLTkzYzQtNGM3OS04ZWIwLTc5ZWFlN2YwOTg2YyIKICAgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo4ZTM0ZTE1OS01NWQwLTQzOWItOTUxMC1lNGU5NWUzYTMyMjEiCiAgIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo2NTIxYTMwYS1mZjIxLTQ1ODItOWE2NS0wZWVjY2E3N2U2OTIiCiAgIGRjOkZvcm1hdD0iaW1hZ2UvcG5nIgogICBHSU1QOkFQST0iMi4wIgogICBHSU1QOlBsYXRmb3JtPSJXaW5kb3dzIgogICBHSU1QOlRpbWVTdGFtcD0iMTYyMDcyODY5MDE4NzE1OSIKICAgR0lNUDpWZXJzaW9uPSIyLjEwLjI0IgogICB0aWZmOk9yaWVudGF0aW9uPSIxIgogICB4bXA6Q3JlYXRvclRvb2w9IkdJTVAgMi4xMCI+CiAgIDx4bXBNTTpIaXN0b3J5PgogICAgPHJkZjpTZXE+CiAgICAgPHJkZjpsaQogICAgICBzdEV2dDphY3Rpb249InNhdmVkIgogICAgICBzdEV2dDpjaGFuZ2VkPSIvIgogICAgICBzdEV2dDppbnN0YW5jZUlEPSJ4bXAuaWlkOjYyODM5NDBlLWM0NDEtNGVjOS1hNzk2LWEzZTRmMGU4NjE4NSIKICAgICAgc3RFdnQ6c29mdHdhcmVBZ2VudD0iR2ltcCAyLjEwIChXaW5kb3dzKSIKICAgICAgc3RFdnQ6d2hlbj0iMjAyMS0wNS0xMVQxMjoyNDo1MCIvPgogICAgPC9yZGY6U2VxPgogICA8L3htcE1NOkhpc3Rvcnk+CiAgPC9yZGY6RGVzY3JpcHRpb24+CiA8L3JkZjpSREY+CjwveDp4bXBtZXRhPgogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgCjw/eHBhY2tldCBlbmQ9InciPz5GZp8RAAAAolBMVEUAAAAAAAD///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////8d9WLGAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQflBQsKGDLS52TvAAAAUklEQVQoz7WSwQoAIAhDh///0UGWUm1Sh7w+mXMKrGVRuCbJJTABQEnvZ8SFCBkTqGtQEp52Ui34DaSZ06eSmiuzNNRwD5ZnDn2m4rL6GR7fqAFUSwELGsEAfAAAAABJRU5ErkJggg=='');left:0 !important;");
+          					bt.setAttribute("class", "OT_edge-bar-item OT_mute OT_mode-auto");
+          					bt.id = "size"+vars.targetElement;
+          					bt.setAttribute("type", "button");
+          					const func = (event)=>{
+          						var modal = document.getElementById("firstLayout"+vars.targetElement);
+          						var secondLayoutM = document.getElementById("secondLayout"+vars.targetElement);
+          						const isFullPage =  modal.getAttribute("fullPage") == "true";
+          						
+          						if(isFullPage){
+          							//scale down
+          							
+          							//re eneable movable modal
+          							page.local.c8oDragElementFunc(modal);
+          							//change style
+          							modal.style.minWidth = ""+vars.width;
+          							modal.style.minHeight = ""+vars.height;
+          							modal.style.top = "0";
+          							modal.style.left = "0";
+          							modal.setAttribute("fullPage", "false");
+          							// change style of second layout
+          							secondLayoutM.style.width = vars.width;
+          							secondLayoutM.style.height = vars.height;
+          							if(page.local.C8Olayout != undefined){
+          								page.local.C8Olayout.layout();
+          							}
+          						}
+          						else{
+          							//scale up
+          							
+          							//disable movable modal
+          							modal.ontouchstart = null;
+          							modal.ontouchmove = null;
+          							modal.ontouchend = null;
+          							modal.onmouseup = null;
+          							modal.onmousemove = null;
+          							modal.onmousedown = null;
+          							
+          							//change style
+          							modal.style.minWidth = "100%";
+          							modal.style.minHeight = "100%";
+          							modal.style.top = "0";
+          							modal.style.left = "0";
+          							modal.setAttribute("fullPage", "true");
+          							
+          							// change style of second layout
+          							secondLayoutM.style.width = "100vw";
+          							secondLayoutM.style.height = "100vh";
+          							if(page.local.C8Olayout != undefined){
+          								page.local.C8Olayout.layout();
+          							}
+          						}
+          					};
+          					
+          					let check = false;
+                              (function(a){if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino|android|ipad|playbook|silk/i.test(a)||/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0,4))) check = true;})(navigator.userAgent||navigator.vendor||window["opera"]);
+                              if(check){
+          						bt.ontouchstart = func;
+          					}
+          					else{
+          						bt.onclick = func;
+          					}
+          					
+          					currentParent.appendChild(bt);
+          				}				
+          			}
+          			var setMini = (el)=>{
+          				el.style.position = "absolute";
+          				el.style.right = "0";
+          				el.style.bottom = "0";
+          				el.style.left = "unset";
+          				el.style.top = "unset";
+          				el.style.width = "20%";
+          				el.style.height = "20%";
+          				el.style.zIndex ="100";
+          			}
+          			var setBig = (el)=>{
+          				el.style.position = "absolute";
+          				el.style.left = "0";
+          				el.style.top = "0";
+          				el.style.right = "unset";
+          				el.style.bottom = "unset";
+          				el.style.width = "100%";
+          				el.style.height = "100%";
+          				el.style.zIndex ="10";
+          			}
+          			var stream = null;
+          			
+          			const optionsLayoutManager = {
+          			    maxRatio: 3/2,             // The narrowest ratio that will be used (default 2x3)
+          			    minRatio: 9/16,            // The widest ratio that will be used (default 16x9)
+          			    fixedRatio: false,         // If this is true then the aspect ratio of the video is maintained and minRatio and maxRatio are ignored (default false)
+          			    alignItems: ''center'',      // Can be ''start'', ''center'' or ''end''. Determines where to place items when on a row or column that is not full
+          			    bigClass: "OT_big",        // The class to add to elements that should be sized bigger
+          			    bigPercentage: 0.8,        // The maximum percentage of space the big ones should take up
+          			    bigFixedRatio: false,      // fixedRatio for the big ones
+          			    bigAlignItems: ''center'',   // How to align the big items
+          			    smallAlignItems: ''center'', // How to align the small row or column of items if there is a big one
+          			    maxWidth: Infinity,        // The maximum width of the elements
+          			    maxHeight: Infinity,       // The maximum height of the elements
+          			    smallMaxWidth: Infinity,   // The maximum width of the small elements
+          			    smallMaxHeight: Infinity,  // The maximum height of the small elements
+          			    bigMaxWidth: Infinity,     // The maximum width of the big elements
+          			    bigMaxHeight: Infinity,    // The maximum height of the big elements
+          			    bigMaxRatio: 3/2,          // The narrowest ratio to use for the big elements (default 2x3)
+          			    bigMinRatio: 9/16,         // The widest ratio to use for the big elements (default 16x9)
+          			    bigFirst: true,            // Whether to place the big one in the top left (true) or bottom right (false).
+          			                               // You can also pass ''column'' or ''row'' to change whether big is first when you are in a row (bottom) or a column (right) layout
+          			    animate: true,             // Whether you want to animate the transitions using jQuery (not recommended, use CSS transitions instead)
+          			    window: window,            // Lets you pass in your own window object which should be the same window that the element is in
+          			    ignoreClass: ''OT_ignore'',  // Elements with this class will be ignored and not positioned. This lets you do things like picture-in-picture
+          			};
+          			
+          			
+          			// get secondLayout ( this div contains subscribers and publishers elements)
+          			var secondLayout = document.getElementById("secondLayout"+vars.targetElement);
+          			// get subscriberLayout (this div contains only subscribers)
+          			var subscribersLayout = document.getElementById("subscribersLayout"+vars.targetElement);
+          			// get div OTLayoutManager that conatins the manager library for subscribers elements
+          			var divOTLayoutManager = document.getElementById("OTLayoutManager"+vars.targetElement);
+          			// create the current div subscriber or publisher
+          			var currentElement = document.createElement("div");
+          			
+          			var layout;
+          			if(divOTLayoutManager == null){
+          				subscribersLayout = document.createElement("div");
+          				subscribersLayout.id = "subscribersLayout"+vars.targetElement;
+          				divOTLayoutManager = document.createElement("div");
+          				divOTLayoutManager.id = "OTLayoutManager"+vars.targetElement;
+          				divOTLayoutManager.style.width = "100%";
+          				divOTLayoutManager.style.height = "100%";
+          				secondLayout.appendChild(subscribersLayout);
+          				subscribersLayout.appendChild(divOTLayoutManager);
+          			}
+          			//@ts-ignore 
+          			page.local.C8Olayout = layout = OTLayoutManager(divOTLayoutManager, optionsLayoutManager);
+          			
+          			
+          			if(vars.role == "subscriber"){
+          				page.local.c8ouniqueC8OSubscriberC8O = subscribersLayout;
+          				
+          			}
+          			else{
+          				page.local.c8ouniqueC8OPublisherC8O = currentElement;
+          			}
+          			     
+              		function handleError(error) {
+              		    if (error) {
+                              page.c8o.log.error(''[OpenTok] error : '' + error.message);
+              		    }
+              		}
+              		var session = OT.initSession(vars.apiKey, vars.sessionId);
+          			page.local.session = session
+              		
+              		if (vars.role == "subscriber") {
+          				
+                  		session.on(''streamCreated'', function(event) {
+                  		     subscriber = session.subscribe(event.stream, "OTLayoutManager"+vars.targetElement, {
+                  		       insertMode: ''append'',
+          						width: currentElement.style.width,
+          						height: currentElement.style.height,
+                  		     }, handleError);
+          					
+          					setBig(page.local.c8ouniqueC8OSubscriberC8O);
+          					setMini(page.local.c8ouniqueC8OPublisherC8O);
+          					stream = event.stream;
+          					//divOTLayoutManager.appendChild(currentElement);
+          					layout.layout();
+          					setTimeout(()=>{
+          						addmyButton();
+          					})
+          				
+                              resolve();
+                  		});
+          
+          				session.on(''streamDestroyed'', (event) => {
+          				  event.preventDefault();
+          				  session.getSubscribersForStream(event.stream).forEach((subscriber) => {
+          				    subscriber.element.classList.remove(''ot-layout'');
+          				    setTimeout(() => {
+          				      subscriber["destroy"]();
+          				      layout.layout();
+          						if(divOTLayoutManager.childNodes.length == 0){
+          							setBig(page.local.c8ouniqueC8OPublisherC8O);
+          							setMini(page.local.c8ouniqueC8OSubscriberC8O);
+          							
+          						}
+          				    }, 200);
+          				  });
+          				});
+                  		
+                          session.connect(vars.token, function(error) {
+                              if (error) {
+                                  handleError(error);
+                              }
+                              resolve();
+                          });
+              		}
+              		
+                      if (vars.role == "publisher") {
+          
+          				setMini(currentElement);
+                  		publisher = OT.initPublisher(currentElement, {
+                  		        insertMode: ''replace'',
+          						resolution: "1280x720",
+          						width: currentElement.style.width,
+          						height: currentElement.style.height,
+                  		}, handleError)
+                  		
+                          // Connect to the session
+                          session.connect(vars.token, function(error) {
+                              // If the connection is successful, initialize a publisher and publish to the session
+                              if (error) {
+                                  handleError(error);
+                              } else {
+          						setBig(page.local.c8ouniqueC8OPublisherC8O);
+          						setMini(page.local.c8ouniqueC8OSubscriberC8O);
+                                  session.publish(publisher, handleError);
+          						secondLayout.appendChild(currentElement);	
+          						setTimeout(()=>{
+          						addmyButton();
+          					})				
+                              }
+                              resolve();
+                          });
+                      }
+                      if (vars.role == "moderator") {
+                          resolve();
+                      }
+          
+          '
+  module_ts_imports: 
+    - xmlizable: 
+      - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+      - com.twinsoft.convertigo.beans.common.XMLVector: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+          - com.twinsoft.convertigo.beans.common.XMLVector: 
+            - java.lang.String: 
+              - ↑value: '* as OT'
+            - java.lang.String: 
+              - ↑value: '@opentok/client'
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+          - com.twinsoft.convertigo.beans.common.XMLVector: 
+            - java.lang.String: 
+              - ↑value: '* as OTLayoutManager'
+            - java.lang.String: 
+              - ↑value: opentok-layout-js
+  package_dependencies: 
+    - xmlizable: 
+      - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+      - com.twinsoft.convertigo.beans.common.XMLVector: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+          - com.twinsoft.convertigo.beans.common.XMLVector: 
+            - java.lang.String: 
+              - ↑value: '@opentok/client'
+            - java.lang.String: 
+              - ↑value: 2.18.1
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+          - com.twinsoft.convertigo.beans.common.XMLVector: 
+            - java.lang.String: 
+              - ↑value: opentok-layout-js
+            - java.lang.String: 
+              - ↑value: 3.8.0
+  page_ts_imports: 
+    - xmlizable: 
+      - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+      - com.twinsoft.convertigo.beans.common.XMLVector: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+          - com.twinsoft.convertigo.beans.common.XMLVector: 
+            - java.lang.String: 
+              - ↑value: '* as OT'
+            - java.lang.String: 
+              - ↑value: '@opentok/client'
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.common.XMLVector
+          - com.twinsoft.convertigo.beans.common.XMLVector: 
+            - java.lang.String: 
+              - ↑value: '* as OTLayoutManager'
+            - java.lang.String: 
+              - ↑value: opentok-layout-js
+  ↓apiKey [ngx.components.UIControlVariable-1620306742994]: 
+    varValue: 
+      - xmlizable: 
+        - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+        - MobileSmartSourceType: script:params.apiKey
+  ↓sessionId [ngx.components.UIControlVariable-1620306742997]: 
+    varValue: 
+      - xmlizable: 
+        - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+        - MobileSmartSourceType: script:params.sessionId
+  ↓token [ngx.components.UIControlVariable-1620306743000]: 
+    varValue: 
+      - xmlizable: 
+        - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+        - MobileSmartSourceType: script:params.token
+  ↓role [ngx.components.UIControlVariable-1620306743003]: 
+    varValue: 
+      - xmlizable: 
+        - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+        - MobileSmartSourceType: script:params.role
+  ↓width [ngx.components.UIControlVariable-1620306743006]: 
+    varValue: 
+      - xmlizable: 
+        - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+        - MobileSmartSourceType: script:params.width
+  ↓height [ngx.components.UIControlVariable-1620306743009]: 
+    varValue: 
+      - xmlizable: 
+        - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+        - MobileSmartSourceType: script:params.height
+  ↓targetElement [ngx.components.UIControlVariable-1620307231786]: 
+    varValue: 
+      - xmlizable: 
+        - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+        - MobileSmartSourceType: script:params.targetElement
+↓role [ngx.components.UIStackVariable-1620307147367]: 
+↓targetElement [ngx.components.UIStackVariable-1620307288388]: 
+↓sessionId [ngx.components.UIStackVariable-1620309297954]: 
+↓apiKey [ngx.components.UIStackVariable-1620309372539]: 
+↓token [ngx.components.UIStackVariable-1620309465470]: 
+↓width [ngx.components.UIStackVariable-1620311374567]: 
+↓height [ngx.components.UIStackVariable-1620311376751]: 

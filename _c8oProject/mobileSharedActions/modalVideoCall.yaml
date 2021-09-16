@@ -1,0 +1,236 @@
+↓InvokeSharedAction [ngx.components.UIDynamicInvoke-1620307381255]: 
+  beanData: '{"ionBean":"InvokeAction"}'
+  stack: lib_Vonage_ui_ngx.Mobile_application.Application.initAndCreate
+  ↓name [ngx.components.UIControlVariable-1620307416317]: 
+    varValue: 
+      - xmlizable: 
+        - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+        - MobileSmartSourceType: script:params.sessionName
+  ↓role [ngx.components.UIControlVariable-1620307416319]: 
+    varValue: 
+      - xmlizable: 
+        - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+        - MobileSmartSourceType: script:'PUBLISHER'
+  ↓createTargetElement [ngx.components.UICustomAction-1620307447978]: 
+    actionValue: 
+      - xmlizable: 
+        - ↑classname: com.twinsoft.convertigo.beans.common.FormatedContent
+        - com.twinsoft.convertigo.beans.common.FormatedContent: 
+          →: |
+            '		page.c8o.log.debug(''[MB] ''+ props.actionFunction +'': ''+ props.actionName);
+            		
+            		var div = document.createElement("div");
+            		var body = document.getElementsByTagName("body")[0];
+            		
+            		
+            		div.style.zIndex = vars.zIndex;
+            		div.style.position = "absolute";
+            		div.style.minWidth = ""+vars.width;
+            		div.style.minHeight = ""+vars.height;
+            		div.style.backgroundColor = "black";
+            		let id = new Date().getTime() + "";
+            		div.id = "firstLayout"+id;
+            		page.local.videoCallElement = div.id;
+            		if(vars.parentId != undefined && vars.parentId != ''''){
+            			try{
+            				document.getElementById(vars.parentId).appendChild(div);
+            			}
+            			catch(e){
+            				body.appendChild(div)
+            			}
+            		}
+            		else{
+            			body.appendChild(div)
+            		}
+            		
+            		dragElement(div);
+            		var divRelative = document.createElement("div");
+            		divRelative.style.position = "relative";
+            		divRelative.style.width = ""+vars.width;
+            		divRelative.style.height = ""+vars.height;
+            		divRelative.style.marginLeft ="auto";
+            		divRelative.style.marginRight ="auto";
+            		divRelative.id = "secondLayout"+id;
+            		div.appendChild(divRelative)
+            		/**
+            		position: relative;
+                width: 100%;
+                height: 100%;
+                margin-left: auto;
+                margin-right: auto; */
+            		
+            		function dragElement(elmnt) {
+            		    var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+            	        elmnt.onmousedown = dragMouseDown;
+            	        elmnt.ontouchstart = dragMouseDown;
+            		
+            		    function dragMouseDown(e) {
+            				e = e || window.event;
+            			    //e.preventDefault();
+            				if(e.type === "touchstart"){
+            					pos3 = e.touches[0].clientX// - xOffset;
+                    			pos4 = e.touches[0].clientY// - yOffset;
+            					document.ontouchend = closeDragElement;
+            					// call a function whenever the cursor moves:
+            		        	document.ontouchmove = elementDrag;		   
+            				}
+            				else{
+            			        // get the mouse cursor position at startup:
+            			        pos3 = e.clientX;
+            			        pos4 = e.clientY;
+            					document.onmouseup = closeDragElement;
+            					// call a function whenever the cursor moves:
+            		        	document.onmousemove = elementDrag;		       
+            				}
+            		        
+            		    }
+            		
+            		    function elementDrag(e) {
+            				e = e || window.event;
+            		        //e.preventDefault();
+            				if(e.type ==="touchmove"){
+            					// calculate the new cursor position:
+            			        pos1 = pos3 - e.touches[0].clientX;
+            			        pos2 = pos4 - e.touches[0].clientY;
+            			        pos3 = e.touches[0].clientX;
+            			        pos4 = e.touches[0].clientY;
+            				}
+            				else{
+            					// calculate the new cursor position:
+            			        pos1 = pos3 - e.clientX;
+            			        pos2 = pos4 - e.clientY;
+            			        pos3 = e.clientX;
+            			        pos4 = e.clientY;
+            				}
+            		        // set the element''s new position:
+            				var top;
+            				var left;
+            				var computedLeft = (elmnt.offsetLeft - pos1);
+            				var computedTop = (elmnt.offsetTop - pos2);
+            				if(computedTop < 0){
+            					top = 0
+            				}
+            				else if(computedTop > (document.body.clientHeight - parseInt(vars.height))){
+            					top = document.body.clientHeight - parseInt(vars.height)
+            				}
+            				else{
+            					top = computedTop;
+            				}
+            				if(computedLeft < 0){
+            					left = 0
+            				}
+            				else if(computedLeft > (document.body.clientWidth - parseInt(vars.width))){
+            					left = document.body.clientWidth - parseInt(vars.width)
+            				}
+            				else{
+            					left = computedLeft;
+            				}
+            		        elmnt.style.top = top + "px";
+            		        elmnt.style.left = left + "px";
+            		    }
+            		
+            		    function closeDragElement() {
+            		        // stop moving when mouse button is released:
+            		        document.onmouseup = null;
+            		        document.onmousemove = null;
+            				document.ontouchmove = null;
+            				document.ontouchend = null;
+            		    }
+            		}
+            		
+            		page.local.c8oDragElementFunc = dragElement;
+            		
+            		resolve(id);
+            '
+    ↓invokePublisher [ngx.components.UIDynamicInvoke-1620307388635]: 
+      beanData: '{"ionBean":"InvokeAction"}'
+      stack: lib_Vonage_ui_ngx.Mobile_application.Application.initOpenTok
+      ↓role [ngx.components.UIControlVariable-1620307414439]: 
+        varValue: 
+          - xmlizable: 
+            - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+            - MobileSmartSourceType: script:'publisher'
+      ↓targetElement [ngx.components.UIControlVariable-1620307414441]: 
+        varValue: 
+          - xmlizable: 
+            - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+            - MobileSmartSourceType: script:parent.out
+      ↓sessionId [ngx.components.UIControlVariable-1620309459172]: 
+        varValue: 
+          - xmlizable: 
+            - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+            - MobileSmartSourceType: source:{"filter":"Action","project":"lib_Vonage_ui_ngx","input":"","model":{"data":[{"priority":1620307381255},{"priority":1620307352727}],"path":"?.out","prefix":"","suffix":"","custom":"stack['1620307381255']?.out.sessionId","useCustom":true}}
+      ↓apiKey [ngx.components.UIControlVariable-1620309459174]: 
+        varValue: 
+          - xmlizable: 
+            - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+            - MobileSmartSourceType: source:{"filter":"Action","project":"lib_Vonage_ui_ngx","input":"","model":{"data":[{"priority":1620307381255},{"priority":1620307352727}],"path":"?.out","prefix":"","suffix":"","custom":"stack['1620307381255']?.out.apiKey","useCustom":true}}
+      ↓token [ngx.components.UIControlVariable-1620309478093]: 
+        varValue: 
+          - xmlizable: 
+            - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+            - MobileSmartSourceType: source:{"filter":"Action","project":"lib_Vonage_ui_ngx","input":"","model":{"data":[{"priority":1620307388635},{"priority":1620307352727},{"priority":1620307381255},{"priority":1620307447978}],"path":"","prefix":"","suffix":"","custom":"stack['1620307381255']?.out.token","useCustom":true}}
+      ↓width [ngx.components.UIControlVariable-1620311443641]: 
+        varValue: 
+          - xmlizable: 
+            - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+            - MobileSmartSourceType: script:params.width
+      ↓height [ngx.components.UIControlVariable-1620311443643]: 
+        varValue: 
+          - xmlizable: 
+            - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+            - MobileSmartSourceType: script:params.height
+    ↓invokeSubscriber [ngx.components.UIDynamicInvoke-1620310846718]: 
+      beanData: '{"ionBean":"InvokeAction"}'
+      stack: lib_Vonage_ui_ngx.Mobile_application.Application.initOpenTok
+      ↓role [ngx.components.UIControlVariable-1620310846721]: 
+        varValue: 
+          - xmlizable: 
+            - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+            - MobileSmartSourceType: script:'subscriber'
+      ↓targetElement [ngx.components.UIControlVariable-1620310846724]: 
+        varValue: 
+          - xmlizable: 
+            - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+            - MobileSmartSourceType: script:parent.out
+      ↓sessionId [ngx.components.UIControlVariable-1620310846727]: 
+        varValue: 
+          - xmlizable: 
+            - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+            - MobileSmartSourceType: source:{"filter":"Action","project":"lib_Vonage_ui_ngx","input":"","model":{"data":[{"priority":1620307381255},{"priority":1620307352727}],"path":"?.out","prefix":"","suffix":"","custom":"stack['1620307381255']?.out.sessionId","useCustom":true}}
+      ↓apiKey [ngx.components.UIControlVariable-1620310846730]: 
+        varValue: 
+          - xmlizable: 
+            - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+            - MobileSmartSourceType: source:{"filter":"Action","project":"lib_Vonage_ui_ngx","input":"","model":{"data":[{"priority":1620307381255},{"priority":1620307352727}],"path":"?.out","prefix":"","suffix":"","custom":"stack['1620307381255']?.out.apiKey","useCustom":true}}
+      ↓token [ngx.components.UIControlVariable-1620310846733]: 
+        varValue: 
+          - xmlizable: 
+            - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+            - MobileSmartSourceType: source:{"filter":"Action","project":"lib_Vonage_ui_ngx","input":"","model":{"data":[{"priority":1620310846718},{"priority":1620307352727},{"priority":1620307381255},{"priority":1620307447978}],"path":"","prefix":"","suffix":"","custom":"stack['1620307381255']?.out.token","useCustom":true}}
+    ↓width [ngx.components.UIControlVariable-1620382039293]: 
+      varValue: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+          - MobileSmartSourceType: script:params.width
+    ↓height [ngx.components.UIControlVariable-1620382039296]: 
+      varValue: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+          - MobileSmartSourceType: script:params.height
+    ↓zIndex [ngx.components.UIControlVariable-1620740552980]: 
+      varValue: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+          - MobileSmartSourceType: script:params.zIndex
+    ↓parentId [ngx.components.UIControlVariable-1620741367323]: 
+      varValue: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+          - MobileSmartSourceType: script:params.parentId
+↓width [ngx.components.UIStackVariable-1620311488779]: 
+↓height [ngx.components.UIStackVariable-1620311511238]: 
+↓sessionName [ngx.components.UIStackVariable-1620402733301]: 
+↓zIndex [ngx.components.UIStackVariable-1620740520268]: 
+  value: '''10000000000'''
+↓parentId [ngx.components.UIStackVariable-1620741413855]: 

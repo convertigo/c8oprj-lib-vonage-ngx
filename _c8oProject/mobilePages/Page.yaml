@@ -1,0 +1,45 @@
+↑isRoot: true
+scriptContent: 
+  - xmlizable: 
+    - ↑classname: com.twinsoft.convertigo.beans.common.FormatedContent
+    - com.twinsoft.convertigo.beans.common.FormatedContent: 
+      →: |
+        /*Begin_c8o_PageImport*/
+        /*End_c8o_PageImport*/
+        /*Begin_c8o_PageDeclaration*/
+        	/*End_c8o_PageDeclaration*/
+        /*Begin_c8o_PageConstructor*/
+        		/*End_c8o_PageConstructor*/
+        /*Begin_c8o_PageFunction*/
+        	/*End_c8o_PageFunction*/
+        
+segment: path-to-page
+title: Title for Page
+↓Content [ngx.components.UIDynamicElement-1620308548324]: 
+  beanData: '{"ionBean":"Content"}'
+  tagName: ion-content
+  ↓FabContainer [ngx.components.UIDynamicElement-1620308594605]: 
+    beanData: '{"ionBean":"FabContainer"}'
+    tagName: ion-fab
+    ↓FabButton [ngx.components.UIDynamicElement-1620308577765]: 
+      beanData: '{"ionBean":"FabButton"}'
+      tagName: ion-fab-button
+      ↓Event [ngx.components.UIControlEvent-1620308603966]: 
+        ↓InvokeSharedAction [ngx.components.UIDynamicInvoke-1620308612341]: 
+          beanData: '{"ionBean":"InvokeAction"}'
+          stack: lib_Vonage_ui_ngx.Mobile_application.Application.modalVideoCall
+          ↓width [ngx.components.UIControlVariable-1620311531441]: 
+            varValue: 
+              - xmlizable: 
+                - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                - MobileSmartSourceType: plain:200px
+          ↓height [ngx.components.UIControlVariable-1620311531443]: 
+            varValue: 
+              - xmlizable: 
+                - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                - MobileSmartSourceType: plain:200px
+          ↓sessionName [ngx.components.UIControlVariable-1620635374988]: 
+            varValue: 
+              - xmlizable: 
+                - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                - MobileSmartSourceType: script:'test'

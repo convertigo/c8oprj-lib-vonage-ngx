@@ -1,0 +1,28 @@
+↓disconnectAndRemoveVideoCallElement [ngx.components.UICustomAction-1620744465656]: 
+  actionValue: 
+    - xmlizable: 
+      - ↑classname: com.twinsoft.convertigo.beans.common.FormatedContent
+      - com.twinsoft.convertigo.beans.common.FormatedContent: 
+        →: |
+          		try {
+          			page.local.session.disconnect();
+          		} catch(e) {
+          			page.c8o.log.error("disconnectAndRemoveVideoCallElement", e)
+          		}
+          		
+          		try {
+          			document.getElementById(page.local.videoCallElement).remove();
+          		} catch(e) {
+          			page.c8o.log.error("disconnectAndRemoveVideoCallElement", e)
+          		}
+          		
+          		try {
+          			page.local.session.off();
+          		} catch(e) {
+          			page.c8o.log.error("disconnectAndRemoveVideoCallElement", e)
+          		}
+          		
+          		
+          		page.local.session = null;
+          		resolve();
+          

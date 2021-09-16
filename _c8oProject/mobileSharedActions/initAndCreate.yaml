@@ -1,0 +1,87 @@
+comment: session and token
+↓CallSequence [ngx.components.UIDynamicAction-1620306698774]: 
+  beanData: '{"ionBean":"CallSequenceAction","requestable":"plain:lib_Vonage.GetVideoApiKey"}'
+  ↓CallSequence [ngx.components.UIDynamicAction-1620306698777]: 
+    beanData: '{"ionBean":"CallSequenceAction","requestable":"plain:lib_Vonage.AppCreateVideoSession"}'
+    ↓name [ngx.components.UIControlVariable-1620306698780]: 
+      comment: new variable
+      varValue: 
+        - xmlizable: 
+          - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+          - MobileSmartSourceType: script:params.name
+    ↓CallSequence [ngx.components.UIDynamicAction-1620306698783]: 
+      beanData: '{"ionBean":"CallSequenceAction","requestable":"plain:lib_Vonage.GetSessionById"}'
+      ↓docid [ngx.components.UIControlVariable-1620306698786]: 
+        comment: new variable
+        varValue: 
+          - xmlizable: 
+            - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+            - MobileSmartSourceType: script:params.name
+      ↓CallSequence [ngx.components.UIDynamicAction-1620306698789]: 
+        beanData: '{"ionBean":"CallSequenceAction","requestable":"plain:lib_Vonage.ApiGetVideoToken"}'
+        ↓role [ngx.components.UIControlVariable-1620306698792]: 
+          comment: new variable
+          varValue: 
+            - xmlizable: 
+              - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+              - MobileSmartSourceType: script:params.role
+        ↓data [ngx.components.UIControlVariable-1620306698795]: 
+          comment: new variable
+          varValue: 
+            - xmlizable: 
+              - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+              - MobileSmartSourceType: plain:
+        ↓expire [ngx.components.UIControlVariable-1620306698798]: 
+          comment: new variable
+          varValue: 
+            - xmlizable: 
+              - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+              - MobileSmartSourceType: plain:604800
+        ↓sessionID [ngx.components.UIControlVariable-1620306698801]: 
+          comment: new variable
+          varValue: 
+            - xmlizable: 
+              - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+              - MobileSmartSourceType: source:{"filter":"Action","project":"lib_Vonage_ui_ngx","input":"","model":{"data":[{"priority":1620306698783},{"priority":1620306642547},{"priority":1620306698774},{"priority":1620306698777}],"path":"?.out?.data","prefix":"","suffix":"","custom":"stack['CallSequence']?.out?.data","useCustom":false}}
+        ↓apiKey [ngx.components.UIControlVariable-1620306698804]: 
+          comment: new variable
+          varValue: 
+            - xmlizable: 
+              - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+              - MobileSmartSourceType: source:{"filter":"Action","project":"vonage_forms","input":"","model":{"data":[{"priority":1620306698774}],"path":"?.out?.videoApiKey","prefix":"","suffix":"","custom":"","useCustom":false}}
+        ↓apiSecret [ngx.components.UIControlVariable-1620306698807]: 
+          comment: new variable
+          varValue: 
+            - xmlizable: 
+              - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+              - MobileSmartSourceType: source:{"filter":"Sequence","project":"vonage_forms","input":"","model":{"data":[{"sequence":"lib_Vonage.GetVideoApiKeySecret","marker":""}],"path":"?.videoApiKeySecret","prefix":"","suffix":"","custom":"","useCustom":false}}
+        ↓resolveData [ngx.components.UICustomAction-1620306934869]: 
+          actionValue: 
+            - xmlizable: 
+              - ↑classname: com.twinsoft.convertigo.beans.common.FormatedContent
+              - com.twinsoft.convertigo.beans.common.FormatedContent: 
+                →: |
+                  '		page.c8o.log.debug(''[MB] ''+ props.actionFunction +'': ''+ props.actionName);
+                  		resolve({
+                  			apiKey: vars.apiKey,
+                  			sessionId: vars.sessionId,
+                  			token: vars.token
+                  		});
+                  '
+          ↓apiKey [ngx.components.UIControlVariable-1620307075132]: 
+            varValue: 
+              - xmlizable: 
+                - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                - MobileSmartSourceType: source:{"filter":"Action","project":"lib_Vonage_ui_ngx","input":"","model":{"data":[{"priority":1620306698774},{"priority":1620306642547}],"path":"?.out?.videoApiKey","prefix":"","suffix":"","custom":"","useCustom":false}}
+          ↓sessionId [ngx.components.UIControlVariable-1620307079125]: 
+            varValue: 
+              - xmlizable: 
+                - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                - MobileSmartSourceType: source:{"filter":"Action","project":"lib_Vonage_ui_ngx","input":"","model":{"data":[{"priority":1620306698783},{"priority":1620306642547},{"priority":1620306698774},{"priority":1620306698777}],"path":"?.out?.data","prefix":"","suffix":"","custom":"","useCustom":false}}
+          ↓token [ngx.components.UIControlVariable-1620307080464]: 
+            varValue: 
+              - xmlizable: 
+                - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
+                - MobileSmartSourceType: source:{"filter":"Action","project":"lib_Vonage_ui_ngx","input":"","model":{"data":[{"priority":1620306698789},{"priority":1620306642547},{"priority":1620306698774},{"priority":1620306698777},{"priority":1620306698783}],"path":"?.out?.token","prefix":"","suffix":"","custom":"","useCustom":false}}
+↓name [ngx.components.UIStackVariable-1620306799312]: 
+↓role [ngx.components.UIStackVariable-1620306845210]: 

@@ -23,7 +23,7 @@ title: Video Subscriber
   ↓ToolBar [ngx.components.UIDynamicElement-1604935551089]: 
     beanData: '{"ionBean":"ToolBar","IonColor":"plain:primary"}'
     tagName: ion-toolbar
-    ↓ButtonSet1 [ngx.components.UIDynamicElement-1615221218113]: 
+    ↓ButtonSet1 [ngx.components.UIDynamicElement-1631802292864]: 
       beanData: '{"ionBean":"ButtonSet","SetPosition":"plain:start"}'
       tagName: ion-buttons
       ↓Button [ngx.components.UIDynamicElement-1604935551098]: 
@@ -104,13 +104,13 @@ title: Video Subscriber
             varValue: 
               - xmlizable: 
                 - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-                - MobileSmartSourceType: source:{"filter":"Sequence","project":"lib_Vonage","input":"listen(['lib_Vonage.ApiGetVideoToken'])?.token"}
+                - MobileSmartSourceType: source:{"filter":"Sequence","project":"lib_Vonage_ui_ngx","input":"listen(['lib_Vonage_ui_ngx.ApiGetVideoToken'])?.token","model":{"data":[{"sequence":"lib_Vonage.ApiGetVideoToken","marker":""}],"path":"?.token","prefix":"","suffix":"","custom":"","useCustom":false}}
           ↓apiKey [ngx.components.UIUseVariable-1604935551155]: 
             comment: The apiKey as declared in the API portal
             varValue: 
               - xmlizable: 
                 - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-                - MobileSmartSourceType: source:{"filter":"Global","project":"lib_Vonage_ui_ngx","input":"router.sharedObject?.videoApiKey"}
+                - MobileSmartSourceType: source:{"filter":"Global","project":"lib_Vonage_ui_ngx","input":"router.sharedObject?.videoApiKey","model":{"data":[{"sharedObject":"router.sharedObject"}],"path":"?.videoApiKey","prefix":"","suffix":"","custom":"","useCustom":false}}
           ↓mode [ngx.components.UIUseVariable-1604935551158]: 
             comment: The mode, can be publisher, subscriber or moderator
             varValue: 

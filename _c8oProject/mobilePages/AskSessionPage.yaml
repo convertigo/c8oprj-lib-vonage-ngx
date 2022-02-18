@@ -8,7 +8,6 @@ title: Title for AskSessionPage
     beanData: '{"ionBean":"Label"}'
     tagName: ion-label
     ↓Text [ngx.components.UIText-1604829734957]: 
-      i18n: false
       textValue: 
         - xmlizable: 
           - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
@@ -26,12 +25,11 @@ title: Title for AskSessionPage
       attrValue: 
         - xmlizable: 
           - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
-          - MobileSmartSourceType: script:sessionName
+          - MobileSmartSourceType: script:local.sessionName
   ↓Button [ngx.components.UIDynamicElement-1604829566620]: 
     beanData: '{"ionBean":"Button"}'
     tagName: ion-button
     ↓Text [ngx.components.UIText-1604829587884]: 
-      i18n: false
       textValue: 
         - xmlizable: 
           - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
@@ -59,7 +57,6 @@ title: Title for AskSessionPage
     beanData: '{"ionBean":"Button"}'
     tagName: ion-button
     ↓Text [ngx.components.UIText-1604829589988]: 
-      i18n: false
       textValue: 
         - xmlizable: 
           - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType

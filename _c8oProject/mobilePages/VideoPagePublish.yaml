@@ -34,7 +34,6 @@ title: Video publisher
       beanData: '{"ionBean":"BarTitle"}'
       tagName: ion-title
       ↓Text [ngx.components.UIText-1604828111250]: 
-        i18n: false
         textValue: 
           - xmlizable: 
             - ↑classname: com.twinsoft.convertigo.beans.ngx.components.MobileSmartSourceType
